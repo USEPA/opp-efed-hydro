@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import xarray as xr
-from hydro.paths import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path
+from hydro.paths import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path, ncep_key_path
 
 
 def cdf(path):
@@ -36,9 +36,7 @@ def ncep(year, ncep_vars, bounds=(20, 60, -130, -60), path=None):
     table_paths = [path.format(var, year) for var in ncep_vars]
     full_table = None
     for table_path in table_paths:
-        print(table_path)
         table = cdf(table_path).reset_index()
-        print(table.shape)
         table['lon'] -= 360
         table = table[(table.lat >= y_min) & (table.lat <= y_max) & (table.lon >= x_min) & (table.lon <= x_max)]
         if full_table is None:
@@ -48,7 +46,8 @@ def ncep(year, ncep_vars, bounds=(20, 60, -130, -60), path=None):
     return full_table
 
 
-def keyfile():
+def keyfile(type='weather'):
+    path = weather_key_path if type == 'weather' else ncep_key_path
     data = np.load(weather_key_path)
     points, years, header = data['points'], data['years'], data['header']
     start_date = np.datetime64('{}-01-01'.format(years[0]))
