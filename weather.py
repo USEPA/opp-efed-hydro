@@ -4,10 +4,10 @@ import scipy.interpolate
 import numpy as np
 import datetime as dt
 
-import write
-import read
-from paths import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
-from utilities import MemoryMatrix, DateManager, report
+import hydro.write
+import hydro.read
+from hydro.paths import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
+from hydro.utilities import MemoryMatrix, DateManager, report
 
 ncep_vars = ["tmin.2m", "tmax.2m", "air.2m", "dswrf.ntat", "uwnd.10m", "vwnd.10m"]
 

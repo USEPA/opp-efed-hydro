@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import xarray as xr
-from paths import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path
+from hydro.paths import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path
 
 
 def cdf(path):
