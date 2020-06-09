@@ -48,7 +48,7 @@ def ncep(year, ncep_vars, bounds=(20, 60, -130, -60), path=None):
 
 def keyfile(type='weather'):
     path = weather_key_path if type == 'weather' else ncep_key_path
-    data = np.load(weather_key_path)
+    data = np.load(path)
     points, years, header = data['points'], data['years'], data['header']
     start_date = np.datetime64('{}-01-01'.format(years[0]))
     end_date = np.datetime64('{}-12-31'.format(years[-1]))
