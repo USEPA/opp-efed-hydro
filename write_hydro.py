@@ -1,5 +1,5 @@
 import numpy as np
-from hydro.paths import met_grid_path, ncep_table_path, weather_key_path, ncep_key_path
+from paths import met_grid_path, ncep_table_path, weather_key_path, ncep_key_path
 
 
 def met_grid(precip_points):
