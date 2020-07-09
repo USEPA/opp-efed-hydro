@@ -4,10 +4,10 @@ import scipy.interpolate
 import numpy as np
 import datetime as dt
 
-import hydro.write as write
-import hydro.read as read
-from hydro.paths import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
-from hydro.utilities import MemoryMatrix, DateManager, report
+import write_hydro as write
+import read_hydro as read
+from paths_hydro import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
+from utilities_hydro import MemoryMatrix, DateManager, report
 
 ncep_vars = ["tmin.2m", "tmax.2m", "air.2m", "dswrf.ntat", "uwnd.10m", "vwnd.10m"]
 
@@ -165,6 +165,7 @@ class NcepArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='site_index'):
         # Set row/column offsets
         start_date, end_date, self.header, points = read.keyfile()
+        print(self.header)
         print(points)
         self.points = pd.DataFrame(points, columns=['lat', 'lon', 'site_index']).set_index(index_col)
 

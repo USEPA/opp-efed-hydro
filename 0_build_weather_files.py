@@ -17,6 +17,7 @@ def main():
     # Process all weather and store to memory
     WeatherCubeBuilder(years, bounds)
 
-main()
+#main()
+ncep()
 #if __name__ == '__main__':
 #    main()
