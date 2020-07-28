@@ -1,3 +1,9 @@
+import os
+import numpy as np
+import pandas as pd
+from paths_hydro import nav_path
+
+
 class NavigatorBuilder(object):
     def __init__(self, nhd_table):
         """
@@ -193,7 +199,9 @@ class NavigatorBuilder(object):
 
 
 class Navigator(object):
-    def __init__(self, region_id, upstream_path):
+    def __init__(self, region_id, upstream_path=None):
+        if upstream_path is None:
+            upstream_path = nav_path.format(region_id)
         self.file = upstream_path.format(region_id, 'nav', 'npz')
         self.paths, self.times, self.map, self.alias_to_reach, self.reach_to_alias = self.load()
         self.reach_ids = set(self.reach_to_alias.keys())
@@ -276,7 +284,7 @@ def extract_flows(nhd_table):
     return nhd_table[fields.fetch('flow_file')]
 
 
-def nhd(region):
+def load_condensed_nhd(region):
     """
     Loads data from the NHD Plus dataset and combines into a single table.
     :param region: NHD Hydroregion (str)
@@ -289,7 +297,8 @@ def nhd(region):
         condense_nhd(region, condensed_file)
     return pd.read_csv(condensed_file)
 
-def nhd(nhd_table):
+
+def process_nhd(nhd_table):
     """
     Modify data imported from the NHD Plus dataset. These modifications are chiefly
     to facilitate watershed delination methods in generate_hydro_files.py.
@@ -352,7 +361,6 @@ def nhd(nhd_table):
     return nhd_table
 
 
-
 def condense_nhd(region):
     """
     This function extracts data from the native dbf files that are packaged with NHD
@@ -388,6 +396,23 @@ def condense_nhd(region):
             master_table = append(master_table, table)
     write.condensed_nhd(region, master_table)
 
+
+def find_upstream(nav, source_name, comid, join_table, direction='up'):
+    try:
+        upstream = np.array(nav.upstream_watershed(int(comid), return_times=True))
+    except NameError:
+        return None
+    upstream = pd.DataFrame(upstream.T, columns=['comid', 'days'])
+    upstream_sites = upstream.merge(join_table, on='comid', how='inner')
+    upstream_sites['direction'] = direction
+    if direction == 'up':
+        upstream_sites['station_id'] = source_name
+        upstream_sites = upstream_sites.rename(columns={'site_id': 'intake_id'})
+    elif direction == 'down':
+        upstream_sites['intake_id'] = source_name
+        upstream_sites = upstream_sites.rename(columns={'site_id': 'station_id'})
+        upstream_sites['days'] = 0 - upstream_sites.days
+    return upstream_sites
 
 
 nhd_states = {'01': {"ME", "NH", "VT", "MA", "CT", "RI", "NY"},
