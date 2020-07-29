@@ -57,3 +57,16 @@ def keyfile(type='weather'):
 
 def met_grid():
     return pd.read_csv(met_grid_path).set_index('weather_grid')
+
+def condensed_nhd(region):
+    """
+    Loads data from the NHD Plus dataset and combines into a single table.
+    :param region: NHD Hydroregion (str)
+    :return:
+    """
+
+    fields.refresh()
+    condensed_file = condensed_nhd_path.format(region)
+    if not os.path.exists(condensed_file):
+        condense_nhd(region, condensed_file)
+    return pd.read_csv(condensed_file)
