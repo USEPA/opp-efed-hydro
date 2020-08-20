@@ -141,7 +141,6 @@ class WeatherArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='stationID'):
         # Set row/column offsets
         start_date, end_date, self.header, points = read.keyfile()
-
         self.points = pd.DataFrame(points, columns=['weather_grid', 'stationID', 'lat', 'lon']).set_index(index_col)
 
         # Set dates
@@ -154,23 +153,19 @@ class WeatherArray(MemoryMatrix, DateManager):
     def fetch_station(self, station_id, df=True):
         try:
             data = np.array(self.fetch(station_id, copy=True, verbose=True)).T
-            if df:
-                data = pd.DataFrame(data.T, columns=self.header, index=self.dates)
         except KeyError:
             report("Met station {} not found".format(station_id), warn=2)
             return
-        except ValueError:
-            report(f"Met station {station_id} not working")
-            return
+        if df:
+            data = pd.DataFrame(data.T, columns=self.header, index=self.dates)
         return data
 
 
 class NcepArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='site_index'):
         # Set row/column offsets
-        start_date, end_date, self.header, points = read.keyfile()
-        print(self.header)
-        print(points)
+        start_date, end_date, self.header, points = read.keyfile('ncep')
+
         self.points = pd.DataFrame(points, columns=['lat', 'lon', 'site_index']).set_index(index_col)
 
         # Set dates

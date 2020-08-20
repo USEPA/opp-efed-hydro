@@ -1,7 +1,9 @@
+import os
 import numpy as np
 import pandas as pd
 import xarray as xr
-from paths_hydro import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path, ncep_key_path
+from paths_hydro import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path, ncep_key_path, \
+    condensed_nhd_path
 
 
 def cdf(path):
@@ -58,6 +60,7 @@ def keyfile(type='weather'):
 def met_grid():
     return pd.read_csv(met_grid_path).set_index('weather_grid')
 
+
 def condensed_nhd(region):
     """
     Loads data from the NHD Plus dataset and combines into a single table.
@@ -65,7 +68,6 @@ def condensed_nhd(region):
     :return:
     """
 
-    fields.refresh()
     condensed_file = condensed_nhd_path.format(region)
     if not os.path.exists(condensed_file):
         condense_nhd(region, condensed_file)

@@ -26,6 +26,7 @@ crosswalk_path = os.path.join(local_dir, "Tables", "station_xwalk.csv")
 # Intermediate
 scratch_path = os.path.join(weather_dir, "temp")
 ncep_table_path = os.path.join(scratch_path, "ncep_{}.csv")  # year
+condensed_nhd_path = os.path.join(local_dir, "CondensedNHD", 'nhd{}.csv')  # region
 
 # Outputs
 weather_array_path = os.path.join(weather_dir, "weather_array.dat")
