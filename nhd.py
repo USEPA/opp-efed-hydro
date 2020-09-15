@@ -1,8 +1,11 @@
 import os
 import numpy as np
 import pandas as pd
-from paths_hydro import nav_path
+from paths_hydro import hydro_file_path, navigator_path
+from utilities_hydro import report
 
+
+# TODO - get rid of this
 
 class NavigatorBuilder(object):
     def __init__(self, nhd_table):
@@ -201,7 +204,7 @@ class NavigatorBuilder(object):
 class Navigator(object):
     def __init__(self, region_id, upstream_path=None):
         if upstream_path is None:
-            upstream_path = nav_path.format(region_id)
+            upstream_path = navigator_path.format(region_id)
         self.file = upstream_path.format(region_id, 'nav', 'npz')
         self.paths, self.times, self.lengths, \
         self.map, self.alias_to_reach, self.reach_to_alias = self.load()
@@ -214,7 +217,8 @@ class Navigator(object):
         reverse_conversion = dict(zip(conversion_array, np.arange(conversion_array.size)))
         return data['paths'], data['time'], data['length'], data['path_map'], conversion_array, reverse_conversion
 
-    def upstream_watershed(self, reach_id, mode='reach', return_times=False, return_lengths=False, return_warning=False, verbose=False):
+    def upstream_watershed(self, reach_id, mode='reach', return_times=False, return_lengths=False, return_warning=False,
+                           verbose=False):
 
         def unpack(array):
             first_row = [array[start_row][start_col:]]
@@ -250,6 +254,30 @@ class Navigator(object):
         if verbose and warning is not None:
             report(warning, warn=1)
         return output[0] if len(output) == 1 else output
+
+
+class HydroTable(pd.DataFrame):
+    def __init__(self, region, path, table_type):
+        super().__init__()
+        self.region = region
+        self.path = path.format(self.region, table_type)
+
+        assert table_type in ("lake", "flow"), "Provided table type \"{}\" not in ('lake', 'flow')".format(table_type)
+        data, header = self.read_table()
+
+        super(HydroTable, self).__init__(data=data, columns=header)
+
+        index_col = 'wb_comid' if 'wb_comid' in self.columns else 'comid'
+        self.set_index(index_col, inplace=True)
+        self.index = np.int32(self.index)
+
+    def read_table(self):
+        assert os.path.isfile(self.path), "Table file {} not found".format(self.path)
+        data = np.load(self.path)
+        return data['table'], data['key']
+
+    def fetch(self, feature_id):
+        return self.loc[feature_id]
 
 
 def find_upstream(nav, source_name, comid, join_table, direction='up'):

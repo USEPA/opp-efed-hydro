@@ -1,9 +1,12 @@
+import numpy as np
+from nhd import vpus_nhd
+from utilities_hydro import fields_hydro as fields
 
 
 def process_nhd(nhd_table):
     """
     Modify data imported from the NHD Plus dataset. These modifications are chiefly
-    to facilitate watershed delination methods in generate_hydro_files.py.
+    to facilitate watershed delineation methods in generate_hydro_files.py.
     Remove rows in the condensed NHD table which signify a connection between a reach and a divergence.
     Retains only a single record for a given comid with the downstream divergence info for main divergence.
     :param nhd_table: Hydrographic data from NHD Plus (df)
@@ -79,7 +82,7 @@ def condense_nhd(region):
     master_table = None
     for table_name, new_fields, old_fields in table_map:
         if table_name == 'EROM':
-            for month in erom_months:
+            for month in list(range(1, 13)) + ['MA']:
                 rename = dict(zip(old_fields, [f"{new}_{month}" for new in new_fields]))
                 del rename['comid']
                 table_path = nhd_paths[table_name].format(vpus_nhd[region], region, month)
@@ -97,4 +100,3 @@ def condense_nhd(region):
                 table = table[table.comid > 0]
             master_table = append(master_table, table)
     write.condensed_nhd(region, master_table)
-

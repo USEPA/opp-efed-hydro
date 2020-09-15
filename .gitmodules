@@ -1,0 +1,3 @@
+[submodule "efed_lib"]
+	path = efed_lib_hydro
+	url = https://github.com/usepa/opp-efed

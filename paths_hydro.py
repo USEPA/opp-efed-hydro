@@ -10,8 +10,11 @@ weather_grid_file = os.path.join(global_dir, "WeatherFiles", "weather_stations_h
 
 
 # HydroFiles
-hydrofile_dir = os.path.join(local_dir, "HydroFiles")
-nav_path = os.path.join(hydrofile_dir, "region_{}_nav.npz")
+hydro_file_path = os.path.join(local_dir, "HydroFiles", "region_{}_{}.npz")  # table type
+navigator_path = hydro_file_path.format("{}", "nav")
+
+# Fields
+fields_and_qc_path = os.path.join(local_dir, )
 
 # Path containing NHD Plus dataset
 nhd_dir = os.path.join(global_dir, "NHDPlusV21")
