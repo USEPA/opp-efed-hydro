@@ -1,4 +1,4 @@
-from hydro.weather import WeatherCubeBuilder, NcepBuilder
+from weather import WeatherCubeBuilder, NcepBuilder
 
 
 def ncep():
@@ -17,6 +17,6 @@ def main():
     # Process all weather and store to memory
     WeatherCubeBuilder(years, bounds)
 
-main()
+ncep()
 #if __name__ == '__main__':
 #    main()

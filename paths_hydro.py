@@ -16,6 +16,6 @@ ncep_table_path = os.path.join(scratch_path, "ncep_{}.csv")  # year
 
 # Outputs
 weather_array_path = os.path.join(weather_dir, "weather_array_dummy.dat")
-ncep_array_path = os.path.join(weather_dir, "ncep_array.dat")
 weather_key_path = os.path.join(weather_dir, "weather_key_dummy.npz")
+ncep_array_path = os.path.join(weather_dir, "ncep_array.dat")
 ncep_key_path = os.path.join(weather_dir, "ncep_key.npz")

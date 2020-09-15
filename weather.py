@@ -4,10 +4,10 @@ import scipy.interpolate
 import numpy as np
 import datetime as dt
 
-import hydro.write as write
-import hydro.read as read
-from hydro.paths import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
-from hydro.utilities import MemoryMatrix, DateManager, report
+import write_hydro
+import read_hydro
+from paths_hydro import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
+from utilities_hydro import MemoryMatrix, DateManager, report
 
 ncep_vars = ["tmin.2m", "tmax.2m", "air.2m", "dswrf.ntat", "uwnd.10m", "vwnd.10m"]
 
@@ -23,7 +23,7 @@ class WeatherCubeBuilder(object):
         # Get the coordinates for all precip stations being used and write to file
         self.precip_points = map_stations(bounds)
         #self.populate(bounds)
-        write.keyfile(self.precip_points, self.years, self.output_header)
+        write_hydro.keyfile(self.precip_points, self.years, self.output_header)
 
     def populate(self, bounds):
 
@@ -40,14 +40,14 @@ class WeatherCubeBuilder(object):
                 ncep_table = pd.read_csv(intermediate)
                 ncep_table['time'] = pd.to_datetime(ncep_table['time'])
             else:
-                ncep_table = read.ncep(year, ncep_vars, bounds)
-                write.ncep_table(ncep_table, year)
+                ncep_table = read_hydro.ncep(year, ncep_vars, bounds)
+                write_hydro.ncep_table(ncep_table, year)
 
             # Calculate PET and eliminate unneeded headings
             ncep_table = process_ncep(ncep_table)
 
             # Load precip table
-            precip_table = read.precip(year)
+            precip_table = read_hydro.precip(year)
             precip_table = self.precip_points.merge(precip_table, how='left', on=['lat', 'lon'])
 
             # Determine the offset in days between the start of the year and the start of all years
@@ -83,10 +83,12 @@ class NcepBuilder(object):
         self.output_header = ["lat", "lon", "temp_min", "temp_max", "temp_avg", "pet", "wind"]
 
         self.points = self.get_points()
+        self.points.to_csv("ncep_points.csv")
+        exit()
 
         # Get the coordinates for all precip stations being used and write to file
         self.populate(bounds)
-        write.keyfile(self.points, self.years, self.output_header)
+        write_hydro.keyfile(self.points, self.years, self.output_header, True)
 
     def get_points(self):
         test = ncep_table_path.format(self.years[0])
@@ -109,8 +111,8 @@ class NcepBuilder(object):
                 ncep_table = pd.read_csv(intermediate)
                 ncep_table['time'] = pd.to_datetime(ncep_table['time'])
             else:
-                ncep_table = read.ncep(year, ncep_vars, bounds)
-                write.ncep_table(ncep_table, year)
+                ncep_table = read_hydro.ncep(year, ncep_vars, bounds)
+                write_hydro.ncep_table(ncep_table, year)
 
             # Calculate PET and eliminate unneeded headings
             ncep_table = process_ncep(ncep_table)
@@ -140,7 +142,7 @@ class NcepBuilder(object):
 class WeatherArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='stationID'):
         # Set row/column offsets
-        start_date, end_date, self.header, points = read.keyfile()
+        start_date, end_date, self.header, points = read_hydro.keyfile()
         self.points = pd.DataFrame(points, columns=['weather_grid', 'stationID', 'lat', 'lon']).set_index(index_col)
 
         # Set dates
@@ -164,7 +166,7 @@ class WeatherArray(MemoryMatrix, DateManager):
 class NcepArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='site_index'):
         # Set row/column offsets
-        start_date, end_date, self.header, points = read.keyfile()
+        start_date, end_date, self.header, points = read_hydro.keyfile()
         print(points)
         self.points = pd.DataFrame(points, columns=['lat', 'lon', 'site_index']).set_index(index_col)
 
@@ -221,13 +223,13 @@ def perform_interpolation(daily_precip, daily_ncep, date):
 
 def map_stations(bounds=None, sample_year=1990, overwrite=True):
     """ Use a representative precip file to assess the number of precipitation stations """
-    crosswalk = read.crosswalk()
+    crosswalk = read_hydro.crosswalk()
     if overwrite or not os.path.exists(met_grid_path):
-        stations = read.precip(sample_year, bounds)[['lat', 'lon']] \
+        stations = read_hydro.precip(sample_year, bounds)[['lat', 'lon']] \
             .drop_duplicates().sort_values(['lat', 'lon']).reset_index(drop=True)
         # Sort values and add an index
         stations = stations.merge(crosswalk, left_on=('lat', 'lon'), right_on=('lat_met', 'lon_met'), how='outer')
-        write.met_grid(stations)
+        write_hydro.met_grid(stations)
     else:
-        stations = read.met_grid()
+        stations = read_hydro.met_grid()
     return stations[['weather_grid', 'stationID', 'lat', 'lon']]

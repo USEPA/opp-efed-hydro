@@ -10,10 +10,10 @@ import numpy as np
 import pandas as pd
 
 # Import local modules and functions
-import read
-import write
+import read_hydro
+import write_hydro
 import modify
-from utilities import report, fields
+from utilities_hydro import report, fields
 from hydro.nhd import NavigatorBuilder
 
 
@@ -33,7 +33,7 @@ def extract_lakes(nhd_table):
     del nhd_table['hydroseq']
 
     # Read and reformat volume table
-    volume_table = read.lake_volumes()
+    volume_table = read_hydro.lake_volumes()
 
     # Join reservoir table with volumes
     nhd_table = nhd_table.merge(volume_table, on="wb_comid")
@@ -61,23 +61,23 @@ def main():
         report("Reading NHD...", 2)
 
         # Read and modify NHD Plus tabular data
-        nhd_table = read.nhd(region)
+        nhd_table = read_hydro.nhd(region)
         nhd_table = modify.nhd(nhd_table)
 
         report("Building navigator...", 2)
         # Build Navigator object and write to file
         nav = NavigatorBuilder(nhd_table)
-        write.navigator(region, nav)
+        write_hydro.navigator(region, nav)
 
         report("Building flow file...", 2)
         # Extract flow data from NHD and write to file
         flows = extract_flows(nhd_table)
-        write.flow_file(flows, region)
+        write_hydro.flow_file(flows, region)
 
         report("Building lake file...", 2)
         # Extract lake data from NHD and write to file
         lakes = extract_lakes(nhd_table)
-        write.lake_file(lakes, region)
+        write_hydro.lake_file(lakes, region)
 
 
 main()
