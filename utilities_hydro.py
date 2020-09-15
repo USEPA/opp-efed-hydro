@@ -12,8 +12,7 @@ def report(message, tabs=0, warn=0):
     print(tabs + prefix + str(message))
 
 
-class MemoryMatrix(object):
-    """ A wrapper for NumPy 'memmap' functionality which allows the storage and recall of arrays from disk """
+class MemoryMatrix(object):    """ A wrapper for NumPy 'memmap' functionality which allows the storage and recall of arrays from disk """
 
     def __init__(self, dimensions, dtype=np.float32, path=None, existing=False, name='null', index_dim=0,
                  verbose=False):
