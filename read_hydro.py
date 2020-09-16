@@ -3,7 +3,9 @@ import numpy as np
 import pandas as pd
 import xarray as xr
 from paths_hydro import precip_path, ncep_path, weather_key_path, met_grid_path, crosswalk_path, ncep_key_path, \
-    condensed_nhd_path
+    condensed_nhd_path, nhd_map_path
+
+from utilities_hydro import fields_hydro as fields
 
 
 def cdf(path):
@@ -61,6 +63,10 @@ def met_grid():
     return pd.read_csv(met_grid_path).set_index('weather_grid')
 
 
+def nhd_map():
+    return pd.read_csv(nhd_map_path)
+
+
 def condensed_nhd(region):
     """
     Loads data from the NHD Plus dataset and combines into a single table.
@@ -72,3 +78,39 @@ def condensed_nhd(region):
     if not os.path.exists(condensed_file):
         condense_nhd(region, condensed_file)
     return pd.read_csv(condensed_file)
+
+
+def condense_nhd(region):
+    """
+    This function extracts data from the native dbf files that are packaged with NHD
+    and writes the data to .csv files with a similar name for faster reading in future
+    runs
+    :param region: NHD Plus Hydroregion (str)
+    """
+
+    def append(master, new_table):
+        return new_table if master is None else master.merge(new_table, on='comid', how='outer')
+
+    fields.refresh()
+    table_map = fields.table_map('NHD')
+    master_table = None
+    for table_name, new_fields, old_fields in table_map:
+        if table_name == 'EROM':
+            for month in erom_months:
+                rename = dict(zip(old_fields, [f"{new}_{month}" for new in new_fields]))
+                del rename['comid']
+                table_path = nhd_paths[table_name].format(vpus_nhd[region], region, month)
+                table = dbf(table_path)[old_fields]
+                table = table.rename(columns=rename)
+                table['table_name'] = table_name
+                master_table = append(master_table, table)
+        else:
+            rename = dict(zip(old_fields, new_fields))
+            table_path = nhd_paths[table_name].format(vpus_nhd[region], region)
+            table = dbf(table_path)
+            table = table[old_fields].rename(columns=rename)
+            table['table_name'] = table_name
+            if table_name == 'PlusFlow':
+                table = table[table.comid > 0]
+            master_table = append(master_table, table)
+    write.condensed_nhd(region, master_table)

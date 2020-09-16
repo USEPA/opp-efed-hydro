@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 from paths_hydro import hydro_file_path, navigator_path
+from read_hydro import nhd_map
 from utilities_hydro import report
 
 
@@ -325,3 +326,5 @@ vpus_nhd = {'01': 'NE', '02': 'MA', '03N': 'SA', '03S': 'SA', '03W': 'SA', '04':
             '12': 'TX', '13': 'RG', '14': 'CO', '15': 'CO', '16': 'GB', '17': 'PN', '18': 'CA'}
 
 nhd_regions = sorted(vpus_nhd.keys())
+
+path_map = nhd_map()

@@ -1,0 +1,666 @@
+NHDPlus V21 National Seamless Geodatabase
+
+December 4, 2016
+ 	  
+
+Table of Contents
+Introduction	3
+\NHDEvents\Gage (feature class)	4
+\NHDPlusCatchment\Catchment (polygon feature class)	5
+\NHDPlusCatchment\CatchmentSP (polygon feature class)	5
+\NHDSnapshot\NHDFlowline_Network (line feature class)	6
+\NHDSnapshot\NHDFlowline_NonNetwork (line feature class)	13
+\NHDSnapshot\NHDWaterbody (polygon feature class)	14
+\NHDSnapshot\NHDArea (polygon feature class)	15
+\NHDPlusBurnComponents\Sink (point feature class)	16
+\NHDPlusBurnComponents\Wall (line feature class)	17
+\NHDPlusBurnComponents\LandSea (polygon feature class)	18
+\NHDPlusBurnComponents\BurnAddLine (line feature class)	18
+\NHDPlusBurnComponents\BurnAddWaterbody (polygon feature class)	19
+\NHDPlusBurnComponents\BurnLineEvent (Line Feature Class)	20
+\WBDSnapshot\HUC12 (polygon feature class)	21
+DivFracMP (table)	26
+NHDFCode (Table)	27
+NHDPlusComponentVersions (Table)	28
+PlusARPointEvent (table)	29
+PlusFlow (table)	30
+PlusFlowAR (table)	31
+
+
+
+Introduction
+
+This national dataset was built from the NHDPlusV21 data.
+
+A complete understanding of the content of this dataset, how to use the data, how to interpret the data, and the relationships between the feature classes, can be obtained from the NHDPlusV21 User Guide available here:
+https://s3.amazonaws.com/nhdplus/NHDPlusV21/Documentation/NHDPlusV2_User _Guide.pdf
+
+Not all NHDPlusV21 feature classes and tables are included in this dataset.  No NHDPlusV21 raster components are included.
+
+The NHDPlusV21 data that is included has been reformatted to reduce the number of feature classes and tables as follows:
+●	PlusFlowlineVAA, HWnodearea, ElevSmooth, CumulativeArea, FeatureureIDGridCode, PlusFlowlineLakeMorphology, and EROM Mean Annual Flow attributes are collapsed onto NHDFlowline.
+●	Simplified catchments and detailed catchments are both included as separate feature classes.
+●	Non-redundant BurnWaterbody and PlusWaterbodyLakeMorphology attributes were collapsed into NHDWaterbody and NHDArea.
+●	Gages were deleted from NHDPoint.
+●	Dams were deleted from NHDPoint, NHDLine, NHDArea.
+●	NHDxxxxxEventFC feature classes were deleted.
+●	EROM and EROMQA fields were renamed to remove "0001".
+●	All the Version Text file names are in a single table.
+●	HUC2, HUC4, and HUC6 fields were added to the National WBD snapshot.
+●	Redundant fields were removed, as needed.
+
+
+
+
+
+
+\NHDEvents\Gage (feature class)
+
+Gage contains the locations of stream flow gages on the NHDFlowline features.
+
+
+Field Name 	Description 	NHDPlusV21 Source
+ReachCode 	ReachCode on which Stream Gage is located 	GageLoc
+Reachresol 	Reach Resolution, “Medium” (i.e. 1:100K scale) or “High” (i.e. 1:24K scale or better) 	GageLoc
+Source_Ori 	Originator of Event 	GageLoc
+Source_Fea 	Gage ID/USGS NWIS Site Number 	GageLoc
+Featuredet 	URL where detailed gage data can be found (NWISWEB) 	GageLoc
+Measure 	Measure along reach where Stream Gage is located in percent from downstream end of the one or more NHDFlowline features that are assigned to the ReachCode 	GageLoc
+EventType 	“StreamGage” 	GageLoc
+FLComID 	ComID of the NHDFlowline feature on which the gage is located. 	GageLoc
+Agency_CD 	Agency Code 	GageInfo
+Station_NM 	Station Name 	GageInfo
+State_CD 	State Code 	GageInfo
+State 	State Abbreviation 	GageInfo
+DASqMi 	NWIS Drainage Area (in square miles) 	GageInfo
+DASqKm 	NWIS Drainage Area (in square kilometers) 	GageInfo
+LatSite 	NWIS Latitude 	GageInfo
+LonSite 	NWIS Longitude  	GageInfo
+Active 	Active/Inactive Status 	GageInfo
+ActiveDate 	Date status was determined 	GageInfo
+GagesII 	Is this a reference gage in the GagesII dataset 	GageInfo
+
+
+
+\NHDPlusCatchment\Catchment (polygon feature class)
+
+Description: Contains a catchment polygon for either an NHDFlowline_Network feature or a Sink feature.
+
+Note: Some polygons may be multipart polygons.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+FeatureID 	FeatureID of a Catchment which is equal to the ComID of an NHDFlowline_Network feature
+or the SinkID of a Sink feature 	Long Integer 	Catchment
+GridCode 	GridCode for feature 	Long Integer 	Catchment
+AreaSqKm 	Catchment area in square kilometers 	Num(13,4) 	Catchment
+SourceFC 	Source Feature Class (“NHDFlowline” or “Sink”) 	Char(20) 	Catchment
+
+
+\NHDPlusCatchment\CatchmentSP (polygon feature class)
+
+Description: Contains a simplified catchment polygon for either an NHDFlowline_Network feature or a Sink feature.
+
+Note: Some polygons may be multipart polygons.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+FeatureID 	FeatureID of a Catchment which is equal to the ComID of an NHDFlowline feature or the SinkID of a Sink feature 	Long Integer 	CatchmentSP
+GridCode 	GridCode for Feature 	Long Integer 	CatchmentSP
+AreaSqKm 	Catchment area in square kilometers 	Num(13,4) 	CatchmentSP
+SourceFC 	Source Feature Class (“NHDFlowline” or “Sink”) 	Char(20) 	CatchmentSP
+
+
+
+\NHDSnapshot\NHDFlowline_Network (line feature class)
+
+Description: NHD linear features of types: stream/river, canal/ditch, pipeline, artificial path, coastline, and connector.  These linear features are included in the NHDPlus surface water network.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+ComID    	Common identifier of the NHD feature 	Long Integer 	NHDFlowline
+FDate 	Feature Currency Date 	Date 	NHDFlowline
+Resolution 	NHD database resolution (i.e. “high”, “medium” or “local”) 	Character (6) 	NHDFlowline
+GNIS_ID 	Geographic Names Information System ID for the value in GNIS_Name 	Character(10) 	NHDFlowline
+GNIS_Name 	Feature Name from the Geographic Names Information System 	Character(65) 	NHDFlowline
+LengthKM 	Feature length in kilometers 	Num(11,3) 	NHDFlowline
+ReachCode 	Reach Code assigned to feature 	Character (14) 	NHDFlowline
+FlowDir 	Flow direction is “With Digitized 	Character (14) 	NHDFlowline
+WBAreaComI  	ComID of the NHD polygonal water feature through which a NHD “Artificial Path” flowline flows 	Long Integer 	NHDFlowline
+FType 	NHD Feature Type 	Character (32) 	NHDFlowline
+FCode 	Numeric codes for various feature attributes in the NHDFCode lookup table 	Num(5) 	NHDFlowline
+StreamLeve  	Stream level 	Num(2) 	PlusFlowlineVAA
+StreamOrde  	Modified Strahler Stream Order 	Num(2) 	PlusFlowlineVAA
+StreamCalc 	Stream Calculator4   	Num(2) 	PlusFlowlineVAA
+FromNode  	Unique identifier for the point at the top of the NHDFlowline feature 	Num(11) 	PlusFlowlineVAA
+ToNode  	Unique identifier for the point at the end of the NHDFlowline feature 	Num(11) 	PlusFlowlineVAA
+HydroSeq  	Hydrologic sequence number; places flowlines in hydrologic order; processing NHDFlowline features in ascending order, encounters the features from downstream to upstream; processing the NHDFlowline features in descending order, encounters the features from upstream to downstream 	Num(11) 	PlusFlowlineVAA
+LevelPathI  	Level Path Identifier - Hydrologic sequence
+number of most downstream NHDFlowline
+feature in the level path 	Num(11) 	PlusFlowlineVAA
+PathLength  	Distance to the terminal NHDFlowline feature downstream along the main path 	Num(13,4) 	PlusFlowlineVAA
+
+TerminalPa
+ 	Terminal Path Identifier - Hydrologic sequence number of terminal NHDFlowline feature 	Num(11) 	PlusFlowlineVAA
+ArbolateSu  	Arbolate Sum - Kilometers of stream upstream of the bottom of the NHDFlowline feature 	Num(13,4) 	PlusFlowlineVAA
+Divergence  	0	– feature is not part of a divergence
+1	– feature is the main path of a divergence
+2	– feature is a minor path of a divergence 	Num(1) 	PlusFlowlineVAA
+StartFlag  	0	– feature is not a headwater flowline
+1	– feature is a headwater flowline 	Num(1) 	PlusFlowlineVAA
+TerminalFl  	0	– not a terminal NHDflowline feature
+1	– a terminal NHDFlowline feature 	Num(1) 	PlusFlowlineVAA
+DnLevel  	Streamlevel of main stem downstream NHDflowline feature 	Num(2) 	PlusFlowlineVAA
+UpLevelPat  	Upstream mainstem level path identifier 	Num(11) 	PlusFlowlineVAA
+UpHydroSeq  	Upstream mainstem hydrologic sequence number  	Num(11) 	PlusFlowlineVAA
+DnLevelPat  	Downstream mainstem level path identifier 	Num(11) 	PlusFlowlineVAA
+DnMinorHyd  	Downstream minor hydrologic sequence number 	Num(11) 	PlusFlowlineVAA
+DnDrainCou  	Count of NHDFlowline features immediately downstream 	Num(2) 	PlusFlowlineVAA
+DnHydroSeq 	Downstream mainstem hydrologic sequence number 	Num(11) 	PlusFlowlineVAA
+FromMeas 	ReachCode route measure (m-value) at bottom of NHDFlowline feature 	Num(8,5) 	PlusFlowlineVAA
+ToMeas 	ReachCode route measure (m-value) at top of NHDFlowline feature 	Num(8,5) 	PlusFlowlineVAA
+RtnDiv 	Returning Divergence Flag;
+0	= no upstream divergences return at the top of this NHDFlowline feature
+1	= one or more upstream divergences returned to the network at the top of this NHDFlowline feature
+9 = not applicable for coastline flowlines 	Num(1) 	PlusFlowlineVAA
+VPUIn 	Are there VPU inflows? 0(no) or 1(yes) 	Num(1) 	PlusFlowlineVAA
+VPUOut 	Are there VPU Outflows? 0(no) or 1(yes) 	Num(1) 	PlusFlowlineVAA
+AreaSqKm 	Catchment Area 	Double 	PlusFlowlineVAA
+TotDASqKm 	Total upstream catchment area from downstream end of flowline. 	Double 	PlusFlowlineVAA
+DivDASqKm 	Divergence-routed upstream catchment area from downstream end of flowline. 	Double 	PlusFlowlineVAA
+Tidal 	Is Flowline Tidal?  1=yes, 0=no 	Num(1) 	PlusFlowlineVAA
+TOTMA 	Mean Annual Time of Travel (days) 	Double 	PlusFlowlineVAA
+WBAreaType 	Feature Type of NHDWaterbody or NHDArea identified in WBAreaComID 	Character(32) 	PlusFlowlineVAA
+
+HwNodeSqKm 	Catchment area in square kilometers that drains to the headwater node of the NHDFlowline feature  	Num(13,4) 	HeadwaterNodeArea
+MaxElevRaw 	Maximum elevation (unsmoothed) in centimeters 	Num(10,3) 	Elevslope
+MinElevRaw 	Minimum elevation (unsmoothed) in centimeters 	Num(10,3) 	Elevslope
+MaxElevSmo 	Maximum elevation (smoothed) in centimeters 	Num(10,3) 	Elevslope
+MinElevSmo 	Minimum elevation (smoothed) in centimeters 	Num(10,3) 	Elevslope
+Slope 	Slope of flowline (meters/meters) based on smoothed elevations; a value of -9998 means that no slope value is available. See Appendix A, step 22 for information about slope computation. 	Num(12,8) 	Elevslope
+ElevFixed 	Flag indicating that the downstream elevation is fixed (i.e. not smoothed) 	Char(1) 	Elevslope
+HWType 	“H” – real headwater,  “A” – Artificial Head water (i.e. all inflows have Gapdist > 43m) 	Char(1) 	Elevslope
+SlopeLenKm 	NHDFlowline feature length (kilometers) used to compute slope. Will be less than
+NHDFlowline.LengthKM when the
+NHDFlowline feature was trimmed during the hydro-enforcement process. See Appendix A, step 14 and 15 for information about trimming of NHDFlowlines. 	Num(11,3) 	Elevslope
+QA_MA 	Mean Annual Flow from runoff (cfs) 	Num(14,3) 	EROM_MA0001
+VA_MA 	Mean Annual Velocity for QA (fps) 	Num(14,5) 	EROM_MA0001
+QC_MA 	Mean Annual Flow with Reference Gage Regression applied to QB (cfs).  Best EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_MA0001
+VC_MA 	Mean Annual Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_MA0001
+QE_MA 	Mean Annual Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_MA0001
+VE_MA 	Mean Annual Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_MA0001
+QA_01 	January Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_010001
+VA_01 	January Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_010001
+QC_01 	January Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_010001
+VC_01 	January Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_010001
+QE_01 	January Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_010001
+
+VE_01 	January Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_010001
+QA_02 	February Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_020001
+VA_02 	February Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_020001
+QC_02 	February Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_020001
+VC_02 	February Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_020001
+QE_02 	February Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_020001
+VE_02 	February Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_020001
+QA_03 	March Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_030001
+VA_03 	March Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_030001
+QC_03 	March Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_030001
+VC_03 	March Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_030001
+QE_03 	March Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_030001
+VE_03 	March Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_030001
+QA_04 	April Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_040001
+VA_04 	April Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_040001
+QC_04 	April Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_040001
+VC_04 	April Mean Monthly Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_040001
+QE_04 	April Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_040001
+VE_04 	April Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_040001
+QA_05 	May Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_050001
+VA_05 	May Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_050001
+
+QC_05 	May Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_050001
+VC_05 	May Mean Monthly Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_050001
+QE_05 	May Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_050001
+VE_05 	May Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_050001
+QA_06 	June Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_060001
+VA_06 	June Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_060001
+QC_06 	June Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_060001
+VC_06 	June Mean Monthly Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_060001
+QE_06 	June Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_060001
+VE_06 	June Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_060001
+QA_07 	July Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_070001
+VA_07 	July Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_070001
+QC_07 	July Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_070001
+VC_07 	July Mean Monthly Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_070001
+QE_07 	July Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_070001
+VE_07 	July Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_070001
+QA_08 	August Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_080001
+VA_08 	August Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_080001
+QC_08 	August Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_080001
+VC_08 	August Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_080001
+
+QE_08 	August Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_080001
+VE_08 	August Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_080001
+QA_09 	September Mean Monthly Flow from runoff
+(cfs) 	Num(14,3) 	EROM_090001
+VA_09 	September Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_090001
+QC_09 	September Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_090001
+VC_09 	September Mean Monthly Velocity for QC (fps). Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_090001
+QE_09 	September Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_090001
+VE_09 	September Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_090001
+QA_10 	October Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_100001
+VA_10 	October Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_100001
+QC_10 	October Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_100001
+VC_10 	October Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_100001
+QE_10 	October Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_100001
+VE_10 	October Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_100001
+QA_11 	November Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_110001
+VA_11 	November Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_110001
+QC_11 	November Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_110001
+VC_11 	November Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_110001
+QE_11 	November Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_110001
+VE_11 	November Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_110001
+QA_12 	December Mean Monthly Flow from runoff (cfs) 	Num(14,3) 	EROM_120001
+VA_12 	December Mean Monthly Velocity for QA (fps) 	Num(14,5) 	EROM_120001
+QC_12 	December Mean Monthly Flow with Reference Gage Regression applied to QB (cfs).  Best
+EROM estimate of “natural” mean flow. 	Num(14,3) 	EROM_120001
+VC_12 	December Mean Monthly Velocity for QC (fps).
+Best EROM estimate of “natural” mean velocity. 	Num(13,5) 	EROM_120001
+QE_12 	December Mean Monthly Flow from gage adjustment (cfs). Best EROM estimate of actual mean flow. 	Num(14,3) 	EROM_120001
+VE_12 	December Mean Monthly Velocity from gage adjustment (fps). Best EROM estimate of actual mean velocity. 	Num(13,5) 	EROM_120001
+LakeFract 	Fraction of lake assigned to Flowline 	Double 	PlusFlowlineLakeM orphology
+SurfArea 	Lake surface area assigned to flowline in square meters 	Double 	PlusFlowlineLakeM orphology
+RAreaHLoad 	Reciprocal area hydraulic loads assigned to flowline in days/meter 	Double 	PlusFlowlineLakeM orphology
+RPUID 	RPU Idendifier 	Text(8)
+VPUID 	VPU Idendifier 	Text(8)
+
+
+
+
+
+
+
+\NHDSnapshot\NHDFlowline_NonNetwork (line feature class)
+
+Description: NHD linear features that are not included in the NHDPlus surface water network.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+ComID    	Common identifier of the NHD feature 	Long Integer 	NHDFlowline
+FDate 	Feature Currency Date 	Date 	NHDFlowline
+Resolution 	NHD database resolution (i.e. “high”, “medium” or “local”) 	Character (6) 	NHDFlowline
+GNIS_ID 	Geographic Names Information System ID for the value in GNIS_Name 	Character(10) 	NHDFlowline
+GNIS_Name 	Feature Name from the Geographic Names Information System 	Character(65) 	NHDFlowline
+LengthKM 	Feature length in kilometers 	Num(11,3) 	NHDFlowline
+ReachCode 	Reach Code assigned to feature 	Character (14) 	NHDFlowline
+FlowDir 	Flow direction is “Uninitialized” 	Character (14) 	NHDFlowline
+WBAreaComI  	ComID of the NHD polygonal water feature through which a NHD “Artificial Path” flowline flows 	Long Integer 	NHDFlowline
+FType 	NHD Feature Type 	Character (32) 	NHDFlowline
+FCode 	Numeric codes for various feature attributes in the NHDFCode lookup table 	Num(5) 	NHDFlowline
+
+
+
+\NHDSnapshot\NHDWaterbody (polygon feature class)
+
+Description: NHD polygonal features of types: Playa, Ice Mass, LakePond, Reservoir, SwampMarsh, and Estuary.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+ComID 	Common identifier of the NHD Waterbody feature 	Long Integer 	NHDWaterbody
+FDate 	Feature Currency Date 	Date 	NHDWaterbody
+Resolution  	NHD database resolution (i.e. “high”, “medium” or 	Character (6) 	NHDWaterbody
+“local”)
+GNIS_ID  	Geographic Names Information System ID for the 	Character(10) 	NHDWaterbody value in GNIS_Name
+GNIS_Name  	Feature Name from the Geographic Names 	Character (65) 	NHDWaterbody
+Information System
+AreaSqKm 	Feature area in square kilometers 	Num(11,3) 	NHDWaterbody
+Elevation  	Feature elevation in feet 	Num(10,3) 	NHDWaterbody
+ReachCode 	Reach Code assigned to feature 	Character (14) 	NHDWaterbody
+FType 	NHD Feature Type 	Character (32) 	NHDWaterbody
+FCode  	Numeric code for various feature attributes; 	Num(5) 	NHDWaterbody
+definitions for codes found in the NHDFCode lookup table
+OnOffNet 	On/Off network flag – 1 = On network, 0 = Off 	Num(1) 	BurnWaterbody network
+PurpCode 	Purpose Code 	Char(2) 	BurnWaterbody
+PurpDesc 	Purpose Description 	Char(254) 	BurnWaterbody
+MeanDepth 	Mean lake depth in meters from J. Hollister 	Double 	PlusWaterbodyL akeMorphology
+LakeVolume 	Lake volume in cubic meters from J. Holister 	Double 	PlusWaterbodyL akeMorphology
+MaxDepth 	Max lake depth in meters from J. Hollister 	Double 	PlusWaterbodyL akeMorphology
+MeanDUsed 	Mean lake depth in meters used (includes estimated 	Double 	PlusWaterbodyL values where Mean_Depth is missing) 	akeMorphology
+MeanDCode 	Mean Depth Code (coded domain – see 	Character(1) 	PlusWaterbodyL
+	NHDPlusV21 User Guide) 	akeMorphology
+LakeArea 	Lake area in square meters 	Double 	PlusWaterbodyL
+akeMorphology
+
+
+
+
+\NHDSnapshot\NHDArea (polygon feature class)
+
+Description: NHD polygonal features of types: Area to be Submerged, BayInlet, Bridge, CanalDitch, DamWeir, Flume, Foreshore, Hazard Zone, Lock Chamber, Inundation Area, Rapids, SeaOcean, Special Use Zone, Spillway, StreamRiver, Submerged Stream, Wash, Water IntakeOutflow, and Area of Complex Channels.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+ComID  	Common identifier of the NHD area feature 	Long Integer 	NHDArea
+FDate  	Feature Currency Date 	Date 	NHDArea
+Resolution  	NHD database resolution (i.e. “high”, “medium” or “local”) 	Character (6) 	NHDArea
+GNIS_ID  	Geographic Names Information System ID for the value in GNIS_Name 	Character(10) 	NHDArea
+GNIS_Name  	Feature Name from the Geographic Names Information System 	Character 65) 	NHDArea
+AreaSqKm  	Feature area in square kilometers 	Num(11,3) 	NHDArea
+Elevation  	Feature elevation in feet 	Num(9,3) 	NHDArea
+FType  	NHD Feature Type 	Character (32) 	NHDArea
+FCode  	Numeric codes for various feature attributes; definitions for codes found in the NHDFCode lookup table 	Num(5) 	NHDArea
+OnOffNet 	On/Off network flag – 1 = On network, 0 = Off network 	Num(1) 	BurnWaterbody
+PurpCode 	Purpose Code 	Char(2) 	BurnWaterbody
+PurpDesc 	Purpose Description 	Char(254) 	BurnWaterbody
+
+
+
+
+
+\NHDPlusBurnComponents\Sink (point feature class)
+
+Description: Point locations of sinks used for hydro-enforcement.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+SinkID 	Unique identifier for Sink point 	Long Integer 	Sink
+PurpCode 	Purpose of Sink, See Appendix E 	Char(2) 	Sink
+PurpDesc 	Description of Sink 	Char(254) 	Sink
+FeatureID 	The id of a feature in another feature class.  This is a
+ComID, if the feature is in NHDFLowline or
+      NHDWaterbody
+Gaz_ID, if the feature is in WBD_Subwatershed
+PolyID, if the feature is in BurnAddWaterbody 	Long Integer 	Sink
+SourceFC 	The feature class of the feature referenced in FeatureID.  Values are “NHDFlowline”, “NHDWaterbody”, “WBD_Subwatershed”, and “BurnAddWaterbody”. 	Char(20) 	Sink
+GridCode 	GridCode assigned to the Sink point 	Long Integer 	Sink
+InRPU 	RPU ID that holds the Sink. 	Char(8) 	Sink
+Catchment 	“Y” – line will receive a catchment, “N” or Null
+- will not receive a catchment 	Text(1) 	Sink
+Burn 	“Y” – line will be used for hydro-enforcement,
+“N” or Null - will not be used for hydroenforcement 	Text(1) 	Sink
+
+
+\NHDPlusBurnComponents\Wall (line feature class)
+
+Description: Lines used as walls in hydro-enforcement.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+WallID 	Unique identifier for wall line 	Long Integer 	Wall
+Source_Id 	Place holder for WBD unique identifier (not part of the WBD data model used for NHDPlus) 	Long Integer 	Wall
+ 	  
+
+\NHDPlusBurnComponents\LandSea (polygon feature class)
+
+Description: Polygons used for hydro-enforcement along the NHD coastline.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+LandSeaID 	Unique identifier for land/sea polygon 	Long Integer 	LandSea
+Land 	A numeric code to identify land/sea/estuary areas.
+1 = Land, -2 = Sea, -1 = Estuary 	Short Integer 	LandSea
+
+\NHDPlusBurnComponents\BurnAddLine (line feature class)
+
+Description: Additional lines not in BurnLineEvent that are needed for hydro-enforcement.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+LineID 	Unique identifier for wall line 	Long Integer 	BurnAddLine
+PurpCode 	Purpose of added line. See Appendix E. 	Text(2) 	BurnAddLine
+PurpDesc Description of added line. Text(254) BurnAddLine GridCode Manually assigned gridcodes. See Appendix Long Integer BurnAddLine
+A, Step 15.
+StreamLeve Manually assigned stream level value. See Short Integer BurnAddLine Appendix A.
+HydroSeq 	See PlusFlowLineVAA; a manually assigned 	Long Integer 	BurnAddLine
+number that puts the additional line is the proper hydrologic sequence with BurnLineEvent.
+
+
+\NHDPlusBurnComponents\BurnAddWaterbody (polygon feature class)
+
+Description: Additional waterbodies not in BurnWaterbody that are needed for hydroenforcement.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+PolyID 	Unique identifier for wall line 	Long Integer 	BurnAddWaterbody
+PurpCode 	Purpose of added waterbody (see 	Text(2) 	BurnAddWaterbody
+Appendix E)
+PurpDesc 	Description of added waterbody 	Text(254) 	BurnAddWaterbody
+OnOffNet 	0 = Off network, 1 = On network 	Short Integer 	BurnAddWaterbody
+FCode 	See NHDFCode 	 	BurnAddWaterbody
+
+ 	  
+\NHDPlusBurnComponents\BurnLineEvent (Line Feature Class)
+
+Description: Events describing the parts of NHDFlowline features used for hydro-enforcement.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+ComID 	Common identifier of an NHDFlowline feature 	Long Integer 	BurnLineEvent
+Reachcode 	NHDFlowline Reachcode 	Text(14) 	BurnLineEvent
+FromMeas 	Downstream BurnLineEvent Measure (mvalue) 	Num(8,5) 	BurnLineEvent
+ToMeas 	Upstream BurnLineEvent Measure (mvalue) 	Num(8,5) 	BurnLineEvent
+BurnLenKM 	Feature length (kilometers) 	Num(11,3) 	BurnLineEvent
+InRPU 	RPU that contains the BurnLineEvent feature 	Text(8) 	BurnLineEvent
+GridCode 	GridCode assigned to the NHDFlowline feature 	Long Integer 	BurnLineEvent
+Catchment 	“Y” – line will receive a catchment, “N” - will not receive a catchment 	Text(1) 	BurnLineEvent
+Burn 	“Y” – line will be used for hydroenforcement, “N” - will not be used for hydro-enforcement 	Text(1) 	BurnLineEvent
+
+
+
+\WBDSnapshot\HUC12 (polygon feature class)
+
+Description: Boundaries of 12-digit Hydrologic Units.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+HUC_8 	8-digit Hydrologic Unit Code 	Char(8) 	NationalWBDSnapshot
+HUC_10  	10-digit Hydrologic Unit Code 	Char(10) 	NationalWBDSnapshot
+HUC_12  	12-digit Hydrologic Unit Code 	Char(12) 	NationalWBDSnapshot
+Acres  	Size of 12-digit HUC 	Double 	NationalWBDSnapshot
+NContrib_A  	Non-contributing area in 12-digit HUC 	Double 	NationalWBDSnapshot
+HU_10_GNIS 	10-digit HUC GNIS name 	Char(23) 	NationalWBDSnapshot
+HU_12_GNIS 	12-digit HUC GNIS name 	Char(23) 	NationalWBDSnapshot
+HU_10_Name 	10-digit HUC name 	Char(80) 	NationalWBDSnapshot
+HU_10_Mod 	Identifies inter-basin transfers (IT), dams at outlet (DM), etc. that modify natural overland flow as modifications are identified from most significant to least significant modification(s).  Hydrologic units with no modification are marked with NM.
+      SC - Storm water Canal or Drainage
+Canal
+      ID - Irrigation Ditch
+      IT – Inter-basin Transfer
+      BC - Barge Canal or Navigation
+Canal
+      SD - Storm water Ditch
+      PD - Pipe Diversion
+      CD - Channel Diversion
+      NC - Noncontributing Area
+      KA - Karst
+      LE - Levee
+      NM - No Modifications
+      OC - Overflow Channel or Flume
+      DM - Dam at outlet or HU boundary
+      GC - General Canal/Ditch
+      PS - Pumping Station
+      DD - Drainage Ditch
+      SI - Siphon
+      AD - Aqueduct
+      RS - Reservoir 	Char(20) 	NationalWBDSnapshot
+
+	      TF - Transportation Feature (road, railroad, docks etc.)
+      GF - Ground-Water Flow
+      MA - Mining Activity
+      UA - Urban Area
+      GL - Glacier
+      IF - Ice Field
+      OF - Overbank Flow
+      OT – Other
+HU_10_Type 	The hydrologic unit type that most closely identifies the watershed.          S - "Standard" hydrologic unit - Any land HU with drainage flowing to a single outlet point, excluding noncontributing areas. This includes areas or small triangular wedges between adjacent HU's that remain after classic hydrologic units are delineated.  Some examples include "true", "classic",
+"composite", and "remnant" hydrologic units.
+      C - "Closed Basin" hydrologic unit - A drainage area that is 100% noncontributing. This means all surface flow is internal, no overland flow leaves the hydrologic unit through the outlet point.       F - "Frontal" hydrologic unit - Areas along the coastline of lakes, oceans, bays, etc. that have more than one outlet.  These HU's are predominantly land with some water areas at or near the outlet(s).       M - “Multiple Outlet” hydrologic unit An area that has more than one natural outlet; for example, an outlet located on a stream with multiple channels. This does not include frontal or water hydrologic units, hydrologic units with artificial inter-basin transfers, drainage outlets through karst or groundwater flow, or outlets that cross a stream with an island. This code should be used only in rare instances.
+      W - "Water" hydrologic unit - Hydrologic units that are predominantly 	Char(1) 	NationalWBDSnapshot
+
+	water with adjacent land areas, ex. lake, estuaries, and harbors.
+      I - "Island" hydrologic unit - A hydrologic unit that is one or more islands and adjacent water out to the toe of the shore face.
+      U - "Unclassified" hydrologic unit - A hydrologic unit that can't be defined or doesn't fit into one of the types that have been listed.
+HU_12_DS 	Downstream 12-digit HUC 	Char(10) 	NationalWBDSnapshot
+HU_12_Name 	12-digit HUC name 	Char(80) 	NationalWBDSnapshot
+HU_12_Mod 	Identifies inter-basin transfers (IT), dams at outlet (DM), etc. that modify natural overland flow as modifications are identified from most significant to least significant modification(s).  Hydrologic units with no modification are marked with NM.
+      SC - Storm water Canal or Drainage
+Canal
+      ID - Irrigation Ditch
+      IT – Inter-basin Transfer
+      BC - Barge Canal or Navigation
+Canal
+      SD - Storm water Ditch
+      PD - Pipe Diversion
+      CD - Channel Diversion
+      NC - Noncontributing Area
+      KA - Karst
+      LE - Levee
+      NM - No Modifications
+      OC - Overflow Channel or Flume
+      DM - Dam at outlet or HU boundary
+      GC - General Canal/Ditch
+      PS - Pumping Station
+      DD - Drainage Ditch
+      SI - Siphon
+      AD - Aqueduct
+      RS - Reservoir
+      TF - Transportation Feature (road, railroad, docks etc.)
+      GF - Ground-Water Flow
+      MA - Mining Activity
+      UA - Urban Area 	Char(20) 	NationalWBDSnapshot
+
+	      GL - Glacier
+      IF - Ice Field
+      OF - Overbank Flow
+      OT - Other
+HU_12_Type 	The hydrologic unit type that most closely identifies the watershed.          S - "Standard" hydrologic unit - Any land HU with drainage flowing to a single outlet point, excluding noncontributing areas. This includes areas or small triangular wedges between adjacent HU's that remain after classic hydrologic units are delineated.  Some examples include "true", "classic",
+"composite", and "remnant" hydrologic units.
+      C - "Closed Basin" hydrologic unit - A drainage area that is 100% noncontributing. This means all surface flow is internal, no overland flow leaves the hydrologic unit through the outlet point.       F - "Frontal" hydrologic unit - Areas along the coastline of lakes, oceans, bays, etc. that have more than one outlet.  These HU's are predominantly land with some water areas at or near the outlet(s).       M - “Multiple Outlet” hydrologic unit An area that has more than one natural outlet; for example, an outlet located on a stream with multiple channels. This does not include frontal or water hydrologic units, hydrologic units with artificial inter-basin transfers, drainage outlets through karst or groundwater flow, or outlets that cross a stream with an island. This code should be used only in rare instances.
+      W - "Water" hydrologic unit - Hydrologic units that are predominantly water with adjacent land areas, ex. lake, estuaries, and harbors.
+      I - "Island" hydrologic unit - A hydrologic unit that is one or more islands and adjacent water out to the toe of the shore face. 	Char(1) 	NationalWBDSnapshot
+	      U - "Unclassified" hydrologic unit - A hydrologic unit that can't be defined or doesn't fit into one of the types that have been listed.
+Meta_ID 	Most recent Meta_ID which links to content in WBD metadata 	Char(4) 	NationalWBDSnapshot
+States 	List of states within the 12-digit HUC 	Char(20) 	NationalWBDSnapshot
+GlobalID 	Globally Unique Identifier 	Char(38) 	NationalWBDSnapshot
+GAZ_ID 	Identifier assigned by NHDPlus production process 	Long Integer 	NationalWBDSnapshot
+WBD_Date 	WBD Snapshot Date 	Date 	NationalWBDSnapshot
+VPUID 	NHDPlus VPU Identifier 	Text(8) 	NationalWBDSnapshot
+AreaHUC12 	Area in square kilometers 	Double 	NationalWBDSnapshot
+HUC_2 	Hydrologic Region Code 	Text(2)
+HUC_4 	Hydrologic Sub-region Code 	Text(4)
+HUC_6 	Hydrologic Basin Code 	Text(6)
+ 	  
+DivFracMP (table)
+
+Description:   Contains specifications about the fraction of a cumulative attribute to be routed through each path in a divergence. The ComIDs in this table represent NHDFlowline surface water features, found in the PlusFlow table, that form a network divergence (i.e. a flow split). All the paths in a given divergence are identified in this table by a unique NodeNumber.
+
+PlusFlowlineVAA.Divergence always follows the named stream path. When stream name is used to determine the main path in a divergence, the entries in the DivFracMP table do not override the main path designation in the Divergence flag in PlusFlowlineVAA. When stream name does not determine the main path, then values in DivFracMP will establish the value in PlusFlowlineVAA.Divergence.
+
+All divergences are represented in this table. If DivFracMP values are specified, they are used in the divergence routing method of all NHDPlus accumulated attributes, such as drainage area. Divergences where no information is known about the fractional split have DivFracMP.DivFrac = -9998 for all paths in the divergence. In this case, the Divergence Routing method uses the PlusFlowlineVAA.Divergence field and routes a fraction of 1 to the main path (i.e. Divergence = 1) and a fraction of 0 to all other paths (i.e. Divergence = 2). The impact of using DivFracMP in the Divergence Routing method is discussed in section “Understanding and Using NHDPlusV2”.
+
+When not set to -9998, the sum of the DivFrac values for all paths in a divergence (i.e. all records with the same NodeNumber) must equal 1.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+NodeNumber 	See PlusFlowlineVAA.FromNode 	Num(11) 	DivFracMP
+ComID 	ComID of an NHDFlowline feature which is a path in a divergence 	Long Integer 	DivFracMP
+DivFrac 	Fraction used for routing cumulative attributes down the flowlines paths in a divergence.
+Values between 0 and 1 	Num(5,4) 	DivFracMP
+
+
+
+NHDFCode (Table)
+
+Description: The FCode table describes attribute codes used in the FCode fields of feature tables.
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+FCode  	A numeric code that represents the feature type plus its encoded attribute values 	Long Integer 	NHDFCode
+Descriptio  	Text description of feature type and the encoded attributes 	Character (255) 	NHDFCode
+CanalDitch  	Canal Ditch Type (aqueduct, unspecified) 	Character (32) 	NHDFCode
+Constructi  	Construction material (earthen, nonearthen, unspecified) 	Character (32) 	NHDFCode
+Hydrograph  	Intermittent or perennial 	Character (32) 	NHDFCode
+Inundation  	Inundation Area Type (debris basin, dewatering area, duck pond, general case, percolation basin, retarding basin) 	Character (32) 	NHDFCode
+Operationa  	Operational Status (abandoned, operational, under construction) 	Character (32) 	NHDFCode
+PipelineTy  	Pipeline type (aqueduct, general case, penstock, siphon) 	Character (32) 	NHDFCode
+Positional  	Positional accuracy (approximate, definite, indefinite, not applicable) 	Character (32) 	NHDFCode
+Relationsh  	Relationship to surface (abovewater, at or near, elevated, underground, underwater, unspecified) 	Character (32) 	NHDFCode
+ReservoirT  	Reservoir type (aquaculture, decorative pool, disposal-tailings pond, disposal-unspecified, evaporator, swimming pool, treatment-cooling pond, treatment-filtration pond, treatment-settling pond, treatment-sewage treatment pond, unspecified water storage) 	Character (32) 	NHDFCode
+Stage  	Elevation stage (Normal Pool, Flood Elevation,
+Average Water Elevation, Date of Photography, High
+Water Elevation, Spillway Elevation) 	Character (32) 	NHDFCode
+SpecialUse  	Special use category (dump site, spoil area) 	Character (32) 	NHDFCode
+
+
+NHDPlusComponentVersions (Table)
+
+Description: A table of NHDPlus components and their versions loaded in this National database.
+
+Field Name 	Description 	Format 	NHDPlusV21 Source
+ComponentName 	NHDPlus component name and version 	Text(50) 	NHDPlusComponentVersions
+
+ 	  
+PlusARPointEvent (table)
+
+Description:  A table containing point events which represent the locations of flow additions to and flow removals from the stream network. The network location is provided by the ReachCode and measure based on the linear referencing system of the NHDFlowline feature class. The geometry of the point events may be derived using the ArcGIS Linear Referencing Tool called Make Route Event Layer.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+ComID 	A nationally unique negative ComID assigned to the point of addition or removal 	Long Integer 	PlusARPointEvent
+EventDate 	Data event was created 	Date 	PlusARPointEvent
+ReachCode 	See NHDFlowline 	Char(14) 	PlusARPointEvent
+ReachResol 	“Medium” 	Char(7 ) 	PlusARPointEvent
+Source_Fea 	External identifier of the event point, generally a key in an external database 	Char(40) 	PlusARPointEvent
+Measure 	m-value (0 to 100) of the point location along the NHDFlowline route defined by ReachCode 	Num(8,5) 	PlusARPointEvent
+EventType 	“Addition” or “Removal” 	Char(100) 	PlusARPointEvent
+
+
+PlusFlow (table)
+
+Description:  A table that describes flowing and non-flowing connections between NHDFlowline features. The table contains entries for: (1) pairs of NHDFlowline features that exchange water, (2) headwater NHDFlowline features, (3) terminal NHDFlowline features, (4) surface water NHDFlowline features that connect to coastline NHDFlowline features, and (5) coastline NHDFlowline features that connect to each other.
+
+Note: Native NHD contains a flow table called NHDFlow.  NHDFlow contains only geometric connections between NHDFlowline features. PlusFlow, on the other hand, includes non-geometric and geometric connections.  Non-geometric connections are used to represent situations such as return flows along an international border and underground connections in karst topography.
+
+Field Name 	Description 	Format 	NHDPlusV21
+Source
+FromComID 	Common identifier for the upstream NHDFlowline feature 	Long Integer 	PlusFlow
+ToComID  	Common identifier for the downstream NHDFlowline feature 	Num(11) 	PlusFlow
+NodeNumber 	Node number at the bottom of FromComID and the top of ToComID 	Num(11) 	PlusFlow
+Direction  	714 – coastal connection (FromComID may be a coastline and ToComID is always a coastline)
+709 – flowing connection
+712	– network start (ToComID is a headwater)
+713	– network end (FromComID is a network end) 	Num(3) 	PlusFlow
+GapDistKm 	Distance between the downstream end of
+FromComID and the upstream end of ToComID 	Double 	PlusFlow
+HasGeo 	“Y”es FromComID touches ToComID, “N”o, there is a geometry gap between FromComID and ToComID 	Char(1) 	PlusFlow
+
+
+PlusFlowAR (table)
+
+Description:  A table that describes the connections between NHDFlowline features, flow addition points and flow removal points. See PlusARPointEvent
+
+Type of Table Entry 	FromComID 	ToComID
+Flow addition 	Addition point 	NHDFlowline feature
+Flow removal 	NHDFlowline feature 	Removal point
+Flow Transfer 	Removal point 	Addition point
+Flow use/consumption 	Removal point 	none
+
+Field Name 	Description 	Format 	NHDPlusV2
+1 Source
+FromComID 	ComID of NHDFlowline feature, Addition point, or Removal point 	Long Integer 	PlusFlowAR
+FromFC 	“NHDFlowline” or
+“PlusARPointEvent” 	Char(20) 	PlusFlowAR
+ToComID  	ComID of NHDFlowline feature, Addition point, or Removal point 	Long Integer 	PlusFlowAR
+ToFC 	“NHDFlowline” or
+“PlusARPointEvent” 	Char(20) 	PlusFlowAR
+Quantity 	Quantity of Flow through this connection 	Double 	PlusFlowAR
+Units  	Units of measurement for Quantity,
+“CFS” = cubic feet per second 	Char(10) 	PlusFlowAR
+

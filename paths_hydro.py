@@ -2,19 +2,22 @@ import os
 
 global_dir = r"J:\opp-efed-data\global"
 local_dir = r"J:\opp-efed-data\hydro"
+table_dir = r"A:\opp-efed\hydro\Tables"
 
 # Weather
 weather_dir = os.path.join(local_dir, "weather")
 weather_grid_file = os.path.join(global_dir, "WeatherFiles", "weather_stations_highres_thiessens_US_alb",
                          "weather_stations_highres_thiessens_US_alb.shp")
 
+# Tables
+fields_and_qc_path = os.path.join(table_dir, "fields_and_qc.csv")
+crosswalk_path = os.path.join(table_dir, "station_xwalk.csv")
+nhd_map_path = os.path.join(table_dir, "nhd_map.csv")
 
 # HydroFiles
 hydro_file_path = os.path.join(local_dir, "HydroFiles", "region_{}_{}.npz")  # table type
 navigator_path = hydro_file_path.format("{}", "nav")
 
-# Fields
-fields_and_qc_path = os.path.join(local_dir, )
 
 # Path containing NHD Plus dataset
 nhd_dir = os.path.join(global_dir, "NHDPlusV21")
@@ -24,7 +27,7 @@ catchment_path = os.path.join(nhd_dir, "NHDPlus{}", "NHDPlus{}", "NHDPlusCatchme
 ncep_path = os.path.join(global_dir, "MetDataNew", "{}.gauss.{}.nc")  # var, year
 precip_path = os.path.join(global_dir, "MetData", "precip.V1.0.{}.nc")  # year
 met_grid_path = os.path.join(weather_dir, "grid", "met_stations.csv")
-crosswalk_path = os.path.join(local_dir, "Tables", "station_xwalk.csv")
+
 
 # Intermediate
 scratch_path = os.path.join(weather_dir, "temp")
