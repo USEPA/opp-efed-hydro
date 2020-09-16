@@ -1,3 +1,11 @@
+import os
+import numpy as np
+import pandas as pd
+from paths_hydro import hydro_file_path, navigator_path
+from read_hydro import nhd_map
+from utilities_hydro import report
+
+
 class NavigatorBuilder(object):
     def __init__(self, nhd_table):
         """
@@ -193,9 +201,12 @@ class NavigatorBuilder(object):
 
 
 class Navigator(object):
-    def __init__(self, region_id, upstream_path):
+    def __init__(self, region_id, upstream_path=None):
+        if upstream_path is None:
+            upstream_path = navigator_path.format(region_id)
         self.file = upstream_path.format(region_id, 'nav', 'npz')
-        self.paths, self.times, self.map, self.alias_to_reach, self.reach_to_alias = self.load()
+        self.paths, self.times, self.lengths, \
+        self.map, self.alias_to_reach, self.reach_to_alias = self.load()
         self.reach_ids = set(self.reach_to_alias.keys())
 
     def load(self):
@@ -203,9 +214,10 @@ class Navigator(object):
         data = np.load(self.file, mmap_mode='r', allow_pickle=True)
         conversion_array = data['alias_index']
         reverse_conversion = dict(zip(conversion_array, np.arange(conversion_array.size)))
-        return data['paths'], data['time'], data['path_map'], conversion_array, reverse_conversion
+        return data['paths'], data['time'], data['length'], data['path_map'], conversion_array, reverse_conversion
 
-    def upstream_watershed(self, reach_id, mode='reach', return_times=False, return_warning=False, verbose=False):
+    def upstream_watershed(self, reach_id, mode='reach', return_times=False, return_lengths=False, return_warning=False,
+                           verbose=False):
 
         def unpack(array):
             first_row = [array[start_row][start_col:]]
@@ -233,6 +245,9 @@ class Navigator(object):
             times = unpack(self.times)
             adjusted_times = np.int32(times - self.times[start_row][start_col])
             output.append(adjusted_times)
+        if return_lengths:
+            lengths = unpack(self.lengths)
+            output.append(lengths)
         if return_warning:
             output.append(warning)
         if verbose and warning is not None:
@@ -240,150 +255,74 @@ class Navigator(object):
         return output[0] if len(output) == 1 else output
 
 
-def extract_lakes(nhd_table):
-    """
-    Create a separate table of static waterbodies from master NHD table
-    :param nhd_table: Input NHD table (df)
-    :return: Table of parameters indexed to waterbodies (df)
-    """
-    # Get a table of all lentic reaches, with the COMID of the reach and waterbody
-    nhd_table = nhd_table[["comid", "wb_comid", "hydroseq", "q_ma"]].rename(columns={'q_ma': 'flow'})
+class HydroTable(pd.DataFrame):
+    def __init__(self, region, path, table_type):
+        super().__init__()
+        self.region = region
+        self.path = path.format(self.region, table_type)
 
-    """ Identify the outlet reach corresponding to each reservoir """
-    # Filter the reach table down to only outlet reaches by getting the minimum hydroseq for each wb_comid
-    nhd_table = nhd_table.sort_values("hydroseq").groupby("wb_comid", as_index=False).first()
-    nhd_table = nhd_table.rename(columns={'comid': 'outlet_comid'})
-    del nhd_table['hydroseq']
+        assert table_type in ("lake", "flow"), "Provided table type \"{}\" not in ('lake', 'flow')".format(table_type)
+        data, header = self.read_table()
 
-    # Read and reformat volume table
-    volume_table = read.lake_volumes()
+        super(HydroTable, self).__init__(data=data, columns=header)
 
-    # Join reservoir table with volumes
-    nhd_table = nhd_table.merge(volume_table, on="wb_comid")
-    nhd_table['residence_time'] = nhd_table['volume'] / nhd_table.flow
+        index_col = 'wb_comid' if 'wb_comid' in self.columns else 'comid'
+        self.set_index(index_col, inplace=True)
+        self.index = np.int32(self.index)
 
-    return nhd_table
+    def read_table(self):
+        assert os.path.isfile(self.path), "Table file {} not found".format(self.path)
+        data = np.load(self.path)
+        return data['table'], data['key']
 
-
-def extract_flows(nhd_table):
-    """
-    Extract modeled flows from master NHD table
-    :param nhd_table: Input NHD data table (df)
-    :return: Table of modeled flows from NHD (df)
-    """
-    fields.refresh()
-    fields.expand('monthly')
-    return nhd_table[fields.fetch('flow_file')]
+    def fetch(self, feature_id):
+        return self.loc[feature_id]
 
 
-def nhd(region):
-    """
-    Loads data from the NHD Plus dataset and combines into a single table.
-    :param region: NHD Hydroregion (str)
-    :return:
-    """
-
-    fields.refresh()
-    condensed_file = condensed_nhd_path.format(region)
-    if not os.path.exists(condensed_file):
-        condense_nhd(region, condensed_file)
-    return pd.read_csv(condensed_file)
-
-def nhd(nhd_table):
-    """
-    Modify data imported from the NHD Plus dataset. These modifications are chiefly
-    to facilitate watershed delination methods in generate_hydro_files.py.
-    Remove rows in the condensed NHD table which signify a connection between a reach and a divergence.
-    Retains only a single record for a given comid with the downstream divergence info for main divergence.
-    :param nhd_table: Hydrographic data from NHD Plus (df)
-    :return: Modified hydrographic data (df)
-    """
-    # Add the divergence and streamcalc of downstream reaches to each row
-    downstream = nhd_table[['comid', 'divergence', 'streamcalc', 'fcode']]
-    downstream.columns = ['tocomid'] + [f + "_ds" for f in downstream.columns.values[1:]]
-    downstream = nhd_table[['comid', 'tocomid']].drop_duplicates().merge(
-        downstream.drop_duplicates(), how='left', on='tocomid')
-
-    # Where there is a divergence, select downstream reach with the highest streamcalc or lowest divergence
-    downstream = downstream.sort_values('streamcalc_ds', ascending=False).sort_values('divergence_ds')
-    downstream = downstream[~downstream.duplicated('comid')]
-
-    nhd_table = nhd_table.merge(downstream, on=['comid', 'tocomid'], how='inner')
-
-    # Calculate travel time, channel surface area, identify coastal reaches and
-    # reaches draining outside a region as outlets and sever downstream connection
-    # for outlet reaches
-
-    nhd_table['tocomid'] = nhd_table.tocomid.fillna(-1)
-
-    # Convert units
-    nhd_table['length'] = nhd_table.pop('lengthkm') * 1000.  # km -> m
-    for month in list(map(lambda x: str(x).zfill(2), range(1, 13))) + ['ma']:
-        nhd_table["q_{}".format(month)] *= 2446.58  # cfs -> cmd
-        nhd_table["v_{}".format(month)] *= 26334.7  # f/s -> md
-
-    # Calculate travel time
-    nhd_table["travel_time"] = nhd_table.length / nhd_table.v_ma
-
-    # Calculate surface area
-    stream_channel_a = 4.28
-    stream_channel_b = 0.55
-    cross_section = nhd_table.q_ma / nhd_table.v_ma
-    nhd_table['surface_area'] = stream_channel_a * np.power(cross_section, stream_channel_b)
-
-    # Indicate whether reaches are coastal
-    nhd_table['coastal'] = np.int16(nhd_table.pop('fcode') == 56600)
-
-    # Identify basin outlets
-    nhd_table['outlet'] = 0
-
-    # Identify all reaches that are a 'terminal path'. HydroSeq is used for Terminal Path ID in the NHD
-    nhd_table.loc[nhd_table.hydroseq.isin(nhd_table.terminal_path), 'outlet'] = 1
-
-    # Identify all reaches that empty into a reach outside the region
-    nhd_table.loc[~nhd_table.tocomid.isin(nhd_table.comid) & (nhd_table.streamcalc > 0), 'outlet'] = 1
-
-    # Designate coastal reaches as outlets. These don't need to be accumulated
-    nhd_table.loc[nhd_table.coastal == 1, 'outlet'] = 1
-
-    # Sever connection between outlet and downstream reaches
-    nhd_table.loc[nhd_table.outlet == 1, 'tocomid'] = 0
-
-    return nhd_table
+def find_upstream(nav, source_name, comid, join_table, direction='up'):
+    try:
+        upstream = np.array(nav.upstream_watershed(int(comid), return_times=True))
+    except NameError:
+        return None
+    upstream = pd.DataFrame(upstream.T, columns=['comid', 'days'])
+    upstream_sites = upstream.merge(join_table, on='comid', how='inner')
+    upstream_sites['direction'] = direction
+    if direction == 'up':
+        upstream_sites['station_id'] = source_name
+        upstream_sites = upstream_sites.rename(columns={'site_id': 'intake_id'})
+    elif direction == 'down':
+        upstream_sites['intake_id'] = source_name
+        upstream_sites = upstream_sites.rename(columns={'site_id': 'station_id'})
+        upstream_sites['days'] = 0 - upstream_sites.days
+    return upstream_sites
 
 
+nhd_states = {'01': {"ME", "NH", "VT", "MA", "CT", "RI", "NY"},
+              '02': {"VT", "NY", "PA", "NJ", "MD", "DE", "WV", "DC", "VA"},
+              '03N': {"VA", "NC", "SC", "GA"},
+              '03S': {"FL", "GA"},
+              '03W': {"FL", "GA", "TN", "AL", "MS"},
+              '04': {"WI", "MN", "MI", "IL", "IN", "OH", "PA", "NY"},
+              '05': {"IL", "IN", "OH", "PA", "WV", "VA", "KY", "TN"},
+              '06': {"VA", "KY", "TN", "NC", "GA", "AL", "MS"},
+              '07': {"MN", "WI", "SD", "IA", "IL", "MO", "IN"},
+              '08': {"MO", "KY", "TN", "AR", "MS", "LA"},
+              '09': {"ND", "MN", "SD"},
+              '10U': {"MT", "ND", "WY", "SD", "MN", "NE", "IA"},
+              '10L': {"CO", "WY", "MN", "NE", "IA", "KS", "MO"},
+              '11': {"CO", "KS", "MO", "NM", "TX", "OK", "AR", "LA"},
+              '12': {"NM", "TX", "LA"},
+              '13': {"CO", "NM", "TX"},
+              '14': {"WY", "UT", "CO", "AZ", "NM"},
+              '15': {"NV", "UT", "AZ", "NM", "CA"},
+              '16': {"CA", "OR", "ID", "WY", "NV", "UT"},
+              '17': {"WA", "ID", "MT", "OR", "WY", "UT", "NV"},
+              '18': {"OR", "NV", "CA"}}
 
-def condense_nhd(region):
-    """
-    This function extracts data from the native dbf files that are packaged with NHD
-    and writes the data to .csv files with a similar name for faster reading in future
-    runs
-    :param region: NHD Plus Hydroregion (str)
-    """
+vpus_nhd = {'01': 'NE', '02': 'MA', '03N': 'SA', '03S': 'SA', '03W': 'SA', '04': 'GL', '05': 'MS',
+            '06': 'MS', '07': 'MS', '08': 'MS', '09': 'SR', '10L': 'MS', '10U': 'MS', '11': 'MS',
+            '12': 'TX', '13': 'RG', '14': 'CO', '15': 'CO', '16': 'GB', '17': 'PN', '18': 'CA'}
 
-    def append(master, new_table):
-        return new_table if master is None else master.merge(new_table, on='comid', how='outer')
+nhd_regions = sorted(vpus_nhd.keys())
 
-    fields.refresh()
-    table_map = fields.table_map('NHD')
-    master_table = None
-    for table_name, new_fields, old_fields in table_map:
-        if table_name == 'EROM':
-            for month in erom_months:
-                rename = dict(zip(old_fields, [f"{new}_{month}" for new in new_fields]))
-                del rename['comid']
-                table_path = nhd_paths[table_name].format(vpus_nhd[region], region, month)
-                table = dbf(table_path)[old_fields]
-                table = table.rename(columns=rename)
-                table['table_name'] = table_name
-                master_table = append(master_table, table)
-        else:
-            rename = dict(zip(old_fields, new_fields))
-            table_path = nhd_paths[table_name].format(vpus_nhd[region], region)
-            table = dbf(table_path)
-            table = table[old_fields].rename(columns=rename)
-            table['table_name'] = table_name
-            if table_name == 'PlusFlow':
-                table = table[table.comid > 0]
-            master_table = append(master_table, table)
-    write.condensed_nhd(region, master_table)
+path_map = nhd_map()

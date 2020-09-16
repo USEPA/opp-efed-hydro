@@ -4,6 +4,8 @@ import pandas as pd
 
 from collections import Iterable
 from tempfile import mkstemp
+from efed_lib_hydro.efed_lib import FieldManager
+from paths_hydro import fields_and_qc_path
 
 
 def report(message, tabs=0, warn=0):
@@ -189,3 +191,6 @@ class DateManager(object):
     @property
     def year_length(self):
         return np.unique(self.dates, return_counts=True)[1]
+
+
+fields_hydro = FieldManager(fields_and_qc_path)

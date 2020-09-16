@@ -3,3 +3,6 @@ Use FieldManager class
 Use report function
 Use DateManager
 Move file acquisition to tools/acquire
+
+Merge NcepArray with WeatherArray
+Allow for custom arrays with path overridecd 

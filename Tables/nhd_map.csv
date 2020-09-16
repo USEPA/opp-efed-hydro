@@ -1,0 +1,547 @@
+path,table,field,desc,format
+NHDPlusGlobalData,BoundaryUnit,DrainageID,Drainage Area identifier,Character (2)
+NHDPlusGlobalData,BoundaryUnit,UnitID,Boundary Unit unique identifier,Character (8)
+NHDPlusGlobalData,BoundaryUnit,UnitName,Boundary Unit Name (populated for VPUs),Character (100)
+NHDPlusGlobalData,BoundaryUnit,UnitType,"Boundary Unit Type - “VPU”, “RPU” ",Character (5)
+NHDPlusGlobalData,BoundaryUnit,Hydroseq,Hydrologic order of Boundary Unit (populated for VPUs),Num(11)
+NHDPlusGlobalData,BoundaryUnit,AreaSqKM,Area in square kilometers of the unit,"Num(13,4) "
+NHDPlusGlobalData,BoundaryUnit,Shape_Area,Feature area in square decimal degrees,See ESRI documentation
+NHDPlusGlobalData,SuperCatchments,"Field 
+Name ",Description,Format
+NHDPlusGlobalData,SuperCatchments,GridCode,Catchment gridcode for the NHDFlowline catchment,"Num(10,0) "
+NHDPlusGlobalData,SuperCatchments,FeatureID,ComID of the associated NHDFlowline,Long Integer
+NHDPlusGlobalData,SuperCatchments,SourceFC,“NHDFlowline”,Char(20)
+NHDPlusGlobalData,SuperCatchments,AreaSqKM,Area of the supercatchment in square kilometers,"Num(18,6) "
+NHDPlusGlobalData,SuperCatchments,VPUID,Vector Processing Unit Identifier,Char(8)
+NHDPlusGlobalData,SC<featureid>,"Field 
+Name ",Description,Format
+NHDPlusGlobalData,SC<featureid>,Value,"The value stored in the grid cell; a unique, compact identification number for a NHDFlowline Super catchment; also referred to as GridCode – See FeatureIDGridCode ",Long Integer
+NHDPlusGlobalData,SC<featureid>,Count,Number of grid cells with a particular value in the Value field.,Long Integer
+NHDPlusNationalData,GageLoc,Field Name,Description,
+NHDPlusNationalData,GageLoc,ComID,"Not populated, a unique id for each NHD event assigned during the central NHD update process. ",
+NHDPlusNationalData,GageLoc,EventDate,Date event was created,
+NHDPlusNationalData,GageLoc,ReachCode,ReachCode on which Stream Gage is located,
+NHDPlusNationalData,GageLoc,ReachSMDat,Reach Version Date (Not populated),
+NHDPlusNationalData,GageLoc,Reachresol,"Reach Resolution, always “Medium” (i.e. 1:100K scale) ",
+NHDPlusNationalData,GageLoc,FeatureCom,Reserved for future use,
+NHDPlusNationalData,GageLoc,FeatureCla,Reserved for future use,
+NHDPlusNationalData,GageLoc,Source_Ori,Originator of Event,
+NHDPlusNationalData,GageLoc,Source_Dat,Description of point entity,
+NHDPlusNationalData,GageLoc,Source_Fea,Gage ID/USGS Site Number,
+NHDPlusNationalData,GageLoc,Featuredet,URL where detailed gage data can be found (NWISWEB),
+NHDPlusNationalData,GageLoc,Measure,Measure along reach where Stream Gage is located in percent from downstream end of the one or more NHDFlowline features that are assigned to the ReachCode,
+NHDPlusNationalData,GageLoc,Offset,Always zero,
+NHDPlusNationalData,GageLoc,EventType,“StreamGage”,
+NHDPlusNationalData,GageLoc,FLComID,ComID of the NHDFlowline feature on which the gage is located.,
+NHDPlusNationalData,GageInfo,Field Name,Description,
+NHDPlusNationalData,GageInfo,GageID,NWIS Gage ID,
+NHDPlusNationalData,GageInfo,Agency_CD,Agency Code,
+NHDPlusNationalData,GageInfo,Station_NM,Station Name,
+NHDPlusNationalData,GageInfo,State_CD,State Code,
+NHDPlusNationalData,GageInfo,State,State name,
+NHDPlusNationalData,GageInfo,DASqMi,NWIS Drainage Area (Sq. Miles),
+NHDPlusNationalData,GageInfo,DASqKm,NWIS Drainage Area (Sq. Kilometers),
+NHDPlusNationalData,GageInfo,LatSite,NWIS Latitude,
+NHDPlusNationalData,GageInfo,LonSite,NWIS Longitude,
+NHDPlusNationalData,GageInfo,Active,"NWIS Status: 0 = Not Active, 1 = Active, 9 = Status Unknown ",
+NHDPlusNationalData,GageInfo,ActiveDate,Date active status was determined,
+NHDPlusNationalData,GageInfo,GagesII,"Blank = not in GagesII dataset, “Ref” = Reference Gage in GagesII dataset, “Non-ref” = in GagesII dataset but not a reference gage ",
+NHDPlusNationalData,Gage_Smooth,Variable,Format,Description
+NHDPlusNationalData,Gage_Smooth,Site_No,Char(16),The NWIS Gage ID
+NHDPlusNationalData,Gage_Smooth,Year,Char(4),The year
+NHDPlusNationalData,Gage_Smooth,Month,Char(2),"The Month. “MA” = Mean Annual, “01” = January, “02” = February, etc. "
+NHDPlusNationalData,Gage_Smooth,Ave,Double,The mean flow for the year/month at the gage (cfs)
+NHDPlusNationalData,Gage_Smooth,CompleteRe,Integer,"= There is not a complete record for the time period.  
+ 
+= There is a complete record for the time period.   
+ 
+A complete record is daily flow values for every day in the time period. 
+ 
+The time period is the Year/Mo for a monthly mean and the Year for an annual mean. The gage adjustments are only done using records that have a complete record. "
+NHDPlusNationalData,nationalcat,"Field 
+Name ",Description,Format
+NHDPlusNationalData,nationalcat,Value,"The value stored in the grid cell; a unique, compact 
+identification number for each catchment; also referred to as GridCode – See FeatureIDGridCode ",Long Integer
+NHDPlusCatchment,FeatureIDGridcode,Field Name,Description,Format
+NHDPlusCatchment,FeatureIDGridcode,FeatureID,FeatureID of the Catchment which equals the ComID of an NHDFlowline feature or the SinkID of a Sink feature,Long Integer
+NHDPlusCatchment,FeatureIDGridcode,GridCode,"Unique, compact identification number for a Catchment ",Long Integer
+NHDPlusCatchment,FeatureIDGridcode,RPUID,RPU identifier for the Catchment,Char(8)
+NHDPlusCatchment,FeatureIDGridcode,SourceFC,Source Feature Class (“NHDFlowline” or “Sink”),Char(20)
+NHDPlusCatchment,cat,"Field 
+Name ",Description,Format
+NHDPlusCatchment,cat,Value,"The value stored in the grid cell; a unique, compact 
+identification number for each catchment; also referred to as GridCode – See FeatureIDGridCode ",Long Integer
+NHDPlusCatchment,cat,Count,Number of grid cells with a particular value in the Value field.,Long Integer
+NHDPlusCatchment,cat,FeatureID,FeatureID of the Catchment which equals the ComID of an NHDFlowline feature or the SinkID of a Sink feature,Long Integer
+NHDPlusCatchment,cat,SourceFC,Source Feature Class (“NHDFlowline” or “Sink”),Char(20)
+NHDPlusCatchment,Catchment,Field Name,Description,Format
+NHDPlusCatchment,Catchment,FeatureID,FeatureID of a Catchment which is equal to the ComID of an NHDFlowline feature or the SinkID of a Sink feature,Long Integer
+NHDPlusCatchment,Catchment,GridCode,See FeaturnIDGridCode,
+NHDPlusCatchment,Catchment,AreaSqKm,Catchment area in square kilometers,"Num(13,4) "
+NHDPlusCatchment,Catchment,SourceFC,Source Feature Class (“NHDFlowline” or “Sink”),Char(20)
+NHDPlusAttributes,CumulativeArea,Field Name,Description,Format
+NHDPlusAttributes,CumulativeArea,ComID,Common identifier of an NHDFlowline feature,Long Integer
+NHDPlusAttributes,CumulativeArea,TotDASqKm,"Total Upstream Cumulative Drainage Area, in square kilometers, at the downstream end of the NHDFlowline feature ","Num(14,6) "
+NHDPlusAttributes,CumulativeArea,DivDASqKm,"Divergence-routed Cumulative Drainage Area, in square kilometers, at the downstream end of the NHDFlowline feature ","Num(14,6) "
+NHDPlusAttributes,DivFracMP,Field Name,Description,Format
+NHDPlusAttributes,DivFracMP,NodeNumber,See PlusFlowlineVAA.FromNode,Num(11)
+NHDPlusAttributes,DivFracMP,ComID,ComID of an NHDFlowline feature which is a path in a divergence,Long Integer
+NHDPlusAttributes,DivFracMP,DivFrac,Fraction used for routing cumulative attributes down the flowlines paths in a divergence. Values between 0 and 1,"Num(5,4) "
+NHDPlusAttributes,DivFracMP,StatusFlag,Reserved for use during NHDPlusV2 Build/Refresh Tools Processing,Char(1)
+NHDPlusAttributes,ElevSlope,Field Name,Description,Format
+NHDPlusAttributes,ElevSlope,ComID,Common identifier of an NHDFlowline feature,Long Integer
+NHDPlusAttributes,ElevSlope,FDate,See NHDFlowline,
+NHDPlusAttributes,ElevSlope,MaxElevRaw,Maximum elevation (unsmoothed) in centimeters,"Num(10,3) "
+NHDPlusAttributes,ElevSlope,MinElevRaw,Minimum elevation (unsmoothed) in centimeters,"Num(10,3) "
+NHDPlusAttributes,ElevSlope,MaxElevSmo,Maximum elevation (smoothed) in centimeters,"Num(10,3) "
+NHDPlusAttributes,ElevSlope,MinElevSmo,Minimum elevation (smoothed) in centimeters,"Num(10,3) "
+NHDPlusAttributes,ElevSlope,Slope,"Slope of flowline (meters/meters) based on smoothed elevations; a value of -9998 means that no slope value is available. See Appendix A, step 22 for information about slope computation. ","Num(12,8) "
+NHDPlusAttributes,ElevSlope,ElevFixed,"Flag indicating that the downstream elevation is fixed (i.e. 
+not smoothed) ",Char(1)
+NHDPlusAttributes,ElevSlope,HWType,"“H” – real headwater,  “A” – Artificial Head water (i.e. all inflows have Gapdist > 43m) ",Char(1)
+NHDPlusAttributes,ElevSlope,StatusFlag,Reserved for use during NHDPlusV2 Build/Refresh Tools Processing,Char(1)
+NHDPlusAttributes,ElevSlope,SlopeLenKm,"NHDFlowline feature length (kilometers) used to compute slope. Will be less than NHDFlowline.LengthKM when the NHDFlowline feature was trimmed during the hydroenforcement process. See Appendix A, step 14 and 15 for information about trimming of NHDFlowlines. ","Num(11,3) "
+NHDPlusAttributes,HeadwaterNodeArea,Field Name,Description,Format
+NHDPlusAttributes,HeadwaterNodeArea,ComID,Common identifier of an NHDFlowline feature,Long Integer
+NHDPlusAttributes,HeadwaterNodeArea,FDate,See NHDFlowline,
+NHDPlusAttributes,HeadwaterNodeArea,HwNodeSqKm,Catchment area in square kilometers that drains to the headwater node of the NHDFlowline feature,"Num(13,4) "
+NHDPlusAttributes,MegaDiv,Field Name,Description,Format
+NHDPlusAttributes,MegaDiv,FromComID,Common identifier of the upstream NHDFlowline feature,Long Integer
+NHDPlusAttributes,MegaDiv,ToComID,Common identifier of the downstream NHDFlowline feature,Long Integer
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,Field Name,Description,Format
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,ComID,Common identifier of NHDWaterbody feature,Long Integer
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,MeanDepth,"Mean Lake Depth in meters from Jeff Hollister (2015,  ",Long Integer
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,LakeVolume,"Lake Volume in cubic meters from Jeff Hollister (2015,  ",Num
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,MaxDepth,"Max Lake Depth in meters from Jeff Hollister (2015,  ",Num
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,MeanDUsed,Mean lake depth used in computations (includes estimated values where MeanDepth is missing),Num
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,MeanDCode,Mean Depth Code – source of MeanDUsed (see values below),Short Integer
+NHDPlusAttributes,PlusWaterbodyLakeMorphology,LakeArea,Lake area in square meters,Num
+NHDPlusAttributes,PlusFlowlineLakeMorphology,Field Name,Description,Format
+NHDPlusAttributes,PlusFlowlineLakeMorphology,ComID,Common identifier of NHDFlowline feature,Long Integer
+NHDPlusAttributes,PlusFlowlineLakeMorphology,LakeFract,Fraction of waterbody allocated to NHDFlowline feature,Num
+NHDPlusAttributes,PlusFlowlineLakeMorphology,SurfArea,Waterbody surface area assigned to NHDFlowline feature in square meters,Num
+NHDPlusAttributes,PlusFlowlineLakeMorphology,RAreaHLoad,"Reciprocal area hydraulic loads assigned to NHDFlowline feature in days/meter.  This is a useful parameter in water quality modeling.  It is, for example, used to determine if ",Num
+NHDPlusAttributes,PlusFlowlineLakeMorphology,Field Name,Description,Format
+NHDPlusAttributes,PlusFlowlineLakeMorphology,,estimated nutrient loss in reservoirs is statistically significant.,
+NHDPlusAttributes,PlusFlowlineVAA,Field Name,Description,Format
+NHDPlusAttributes,PlusFlowlineVAA,ComID,Common identifier of an NHDFlowline feature,Long Integer
+NHDPlusAttributes,PlusFlowlineVAA,FDate,See NHDFlowline,
+NHDPlusAttributes,PlusFlowlineVAA,StreamLeve,Stream level,Num(2)
+NHDPlusAttributes,PlusFlowlineVAA,StreamOrde,Modified Strahler Stream Order,Num(2)
+NHDPlusAttributes,PlusFlowlineVAA,StreamCalc,Stream Calculator,Num(2)
+NHDPlusAttributes,PlusFlowlineVAA,FromNode,Unique identifier for the point at the top of the NHDFlowline feature,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,ToNode,Unique identifier for the point at the end of the NHDFlowline feature,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,HydroSeq,"Hydrologic sequence number; places flowlines in hydrologic order; processing NHDFlowline features in ascending order, encounters the features from downstream to upstream; processing the 
+NHDFlowline features in descending order, encounters the features from upstream to downstream ",Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,LevelPathI,Level Path Identifier - Hydrologic sequence number of most downstream NHDFlowline feature in the level path,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,PathLength,Distance to the terminal NHDFlowline feature downstream along the main path,"Num(13,4) "
+NHDPlusAttributes,PlusFlowlineVAA,TerminalPat,Terminal Path Identifier - Hydrologic sequence number of terminal NHDFlowline feature,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,ArbolateSu,Arbolate Sum - Kilometers of stream upstream of the bottom of the NHDFlowline feature,"Num(13,4) "
+NHDPlusAttributes,PlusFlowlineVAA,Divergence,"– feature is not part of a divergence 
+– feature is the main path of a divergence ",Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,,2 – feature is a minor path of a divergence,
+NHDPlusAttributes,PlusFlowlineVAA,StartFlag,"– feature is not a headwater flowline 
+– feature is a headwater flowline ",Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,TerminalFl,"– not a terminal NHDflowline feature 
+– a terminal NHDFlowline feature ",Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,DnLevel,Streamlevel of main stem downstream NHDflowline feature,Num(2)
+NHDPlusAttributes,PlusFlowlineVAA,ThinnerCod,Not valued; Reserved for future use,
+NHDPlusAttributes,PlusFlowlineVAA,UpLevelPat,Upstream mainstem level path identifier,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,UpHydroSeq,Upstream mainstem hydrologic sequence number,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,DnLevelPat,Downstream mainstem level path identifier,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,DnMinorHyd,Downstream minor hydrologic sequence number,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,DnDrainCou,Count of NHDFlowline features immediately downstream,Num(2)
+NHDPlusAttributes,PlusFlowlineVAA,DnHydroSeq,Downstream mainstem hydrologic sequence number,Num(11)
+NHDPlusAttributes,PlusFlowlineVAA,FromMeas,ReachCode route measure (m-value) at bottom of NHDFlowline feature,"Num(8,5) "
+NHDPlusAttributes,PlusFlowlineVAA,ToMeas,ReachCode route measure (m-value) at top of NHDFlowline feature,"Num(8,5) "
+NHDPlusAttributes,PlusFlowlineVAA,ReachCode,See NHDFlowline,
+NHDPlusAttributes,PlusFlowlineVAA,LengthKm,See NHDFlowline,
+NHDPlusAttributes,PlusFlowlineVAA,FCode,See NHDFlowline,
+NHDPlusAttributes,PlusFlowlineVAA,RtnDiv,"Returning Divergence Flag; 
+= no upstream divergences return at the top of this NHDFlowline feature 
+= one or more upstream divergences returned to the network at the top of this NHDFlowline feature ",Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,OutDiv,Not valued; Reserved for future use,Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,DivEffect,Not valued; Reserved for future use,Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,VPUIn,Are there VPU inflows? 0(no) or 1(yes),Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,VPUOut,Are there VPU Outflows? 0(no) or 1(yes),Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,AreaSqKm,See Catchment,
+NHDPlusAttributes,PlusFlowlineVAA,TotDASqKm,See CumulativeArea,
+NHDPlusAttributes,PlusFlowlineVAA,DivDASqKm,See CumulativeArea,
+NHDPlusAttributes,PlusFlowlineVAA,Tidal,Is NHDFlowline feature considered Tidal? 0(no) or 1(yes),Num(1)
+NHDPlusAttributes,PlusFlowlineVAA,TOTMA,"Time of Travel (populated for non-tidal NHDFlowline Features) in days  Note:  Note:  TOTMA should not be used on minor paths at divergences (PlusFlowlineVAA.Divergence = 2), because these are treated as “start” reaches, with a corresponding lower flow and smaller velocity estimate. ","Num(10,5) "
+NHDPlusAttributes,PlusFlowlineVAA,WBAreaType,"For FType = Artificial Path, the NHDWaterbody.FType or 
+NHDArea.FType for feature identified in NHDFlowline.WBAreaComID ",Char(24)
+NHDPlusAttributes,PlusFlow,Field Name,Description,Format
+NHDPlusAttributes,PlusFlow,FromComID,Common identifier for the upstream NHDFlowline feature,Long Integer
+NHDPlusAttributes,PlusFlow,FromHydSeq,HydroSeq of FromComID,Num(11)
+NHDPlusAttributes,PlusFlow,FromLvlPat,LevelPathID of FromComID,Num(11)
+NHDPlusAttributes,PlusFlow,ToComID,Common identifier for the downstream NHDFlowline feature,Long Integer
+NHDPlusAttributes,PlusFlow,ToHydSeq,Hydroseq of ToComID,Num(11)
+NHDPlusAttributes,PlusFlow,ToLvlPat,LevelPathID of ToComID,Num(11)
+NHDPlusAttributes,PlusFlow,NodeNumber,Node number at the bottom of FromComID and the top of ToComID,Num(11)
+NHDPlusAttributes,PlusFlow,DeltaLevel,Numerical difference between StreamLevel for FromComID and StreamLevel for ToComID,Num(3)
+NHDPlusAttributes,PlusFlow,Direction,"714 – coastal connection (FromComID may be a coastline and ToComID is always a coastline) 
+709 – flowing connection 
+712 – network start (ToComID is a headwater) 713 – network end (FromComID is a network end) ",Num(3)
+NHDPlusAttributes,PlusFlow,GapDistKm,"Distance between the downstream end of 
+FromComID and the upstream end of ToComID ","Num(13,4) "
+NHDPlusAttributes,PlusFlow,HasGeo,"“Y”es FromComID touches ToComID, “N”o, there is a geometry gap between FromComID and ToComID ",Char(1)
+NHDPlusAttributes,PlusFlow,TotDASqKm,See CumulativeArea,
+NHDPlusAttributes,PlusFlow,DivDASqKm,See CumulativeArea,
+NHDPlusAttributes,PlusARPointEvent,Field Name,Description,Format
+NHDPlusAttributes,PlusARPointEvent,ComID,A nationally unique negative ComID assigned to the point of addition or removal,Long Integer
+NHDPlusAttributes,PlusARPointEvent,EventDate,Data event was created,Date
+NHDPlusAttributes,PlusARPointEvent,ReachCode,See NHDFlowline,Char(14)
+NHDPlusAttributes,PlusARPointEvent,ReachSMDat,See NHDReachCode_ComID table,Date
+NHDPlusAttributes,PlusARPointEvent,ReachResol,“Medium”,Char(7 )
+NHDPlusAttributes,PlusARPointEvent,FeatureCom,Not valued,Long Integer
+NHDPlusAttributes,PlusARPointEvent,FeatureCla,Not valued,Char(15)
+NHDPlusAttributes,PlusARPointEvent,Source_Ori,Not valued,Char(130)
+NHDPlusAttributes,PlusARPointEvent,Source_Dat,Not valued,Char(100)
+NHDPlusAttributes,PlusARPointEvent,Source_Fea,"External identifier of the event point, generally a key in an external database ",Char(40)
+NHDPlusAttributes,PlusARPointEvent,FeatureDet,URL link to information about the event point,Char(254)
+NHDPlusAttributes,PlusARPointEvent,Measure,m-value (0 to 100) of the point location along the NHDFlowline route defined by ReachCode,"Num(8,5) "
+NHDPlusAttributes,PlusARPointEvent,Offset,Not valued,Num
+NHDPlusAttributes,PlusARPointEvent,EventType,“Addition” or “Removal”,Char(100)
+NHDPlusAttributes,PlusFlowAR,Field Name,Description,Format
+NHDPlusAttributes,PlusFlowAR,FromComID,"ComID of NHDFlowline feature, Addition point, or Removal point ",Long Integer
+NHDPlusAttributes,PlusFlowAR,FromFC,“NHDFlowline” or “PlusARPointEvent”,Char(20)
+NHDPlusAttributes,PlusFlowAR,ToComID,"ComID of NHDFlowline feature, Addition point, or Removal point ",Long Integer
+NHDPlusAttributes,PlusFlowAR,ToFC,“NHDFlowline” or “PlusARPointEvent”,Char(20)
+NHDPlusAttributes,PlusFlowAR,Quantity,Quantity of Flow through this connection,"Num(14,7) "
+NHDPlusAttributes,PlusFlowAR,Units,"Units of measurement for Quantity,  “CFS” = cubic feet per second ",Num(3)
+NHDPlusFdrFacrrrrrrrr,fac,"Field 
+Name ",Description,Format
+NHDPlusFdrFacrrrrrrrr,fac,Value,Number of cells that drain to each cell.,Long Integer
+NHDPlusFdrFacrrrrrrrr,fdr,"Field 
+Name ",Description,Format
+NHDPlusFdrFacrrrrrrrr,fdr,Value,"The value for the grid cell. Can be assigned one of eight possible values: 
+_  Flow ends (sink) 
+–  Flow is to the East 
+–  Flow is to the Southeast 
+   4 –  Flow is to the South 
+   8 –  Flow is to the Southwest 
+  16 –  Flow is to the West 
+  32 –  Flow is to the Northwest 
+  64 –  Flow is to the North 
+128 – Flow is to the Northeast ",Long Integer
+NHDPlusFdrFacrrrrrrrr,fdr,Count,Number of cells with a particular value in the Value field,Long Integer
+NHDPlusFilledAreasrrrrrrrr,filledareas,"Field 
+Name ",Description,Format
+NHDPlusFilledAreasrrrrrrrr,filledareas,Value,"The value for the grid cell. Can be assigned one of two possible values: 
+–  Cell was not changed by the Fill process 
+–  Cell was raised by the Fill process ",Long Integer
+NHDPlusFilledAreasrrrrrrrr,filledareas,Count,Number of cells with a particular value in the Value field,Long Integer
+NHDPlusCatSeedrrrrrrrr,catseed,"Field 
+Name ",Description,Format
+NHDPlusCatSeedrrrrrrrr,catseed,Value,Gridcode of the catchment. See FeaturnIDGridCode,Long Integer
+NHDPlusFdrNullrrrrrrrr,fdrnull,"Field 
+Name ",Description,Format
+NHDPlusFdrNullrrrrrrrr,fdrnull,Value,"For Stream Network cells, No Data 
+For cells not on the stream network, the value for the grid cell is: 
+_  Flow ends (sink) 
+–  Flow is to the East 
+–  Flow is to the Southeast 
+   4 –  Flow is to the South 
+   8 –  Flow is to the Southwest 
+  16 –  Flow is to the West 
+  32 –  Flow is to the Northwest 
+  64 –  Flow is to the North 
+128 – Flow is to the Northeast 
+NoData – a stream network cell ",Long Integer
+NHDPlusFdrNullrrrrrrrr,fdrnull,Count,Number of cells with a particular value in the Value field,Long Integer
+NHDPlusHydroDemrrrrrrrr,hydrodem,"Field 
+Name ",Description,Format
+NHDPlusHydroDemrrrrrrrr,hydrodem,Value,Elevation value in centimeters,Long Integer
+NHDPlusBurnComponents,BurnLineEvent,Field Name,Description,Format
+NHDPlusBurnComponents,BurnLineEvent,ComID,Common identifier of an NHDFlowline feature,Long Integer
+NHDPlusBurnComponents,BurnLineEvent,Hydroseq,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,FCode,See NHDFlowline,
+NHDPlusBurnComponents,BurnLineEvent,FType,See NHDFlowline,
+NHDPlusBurnComponents,BurnLineEvent,Fdate,See NHDFlowline,
+NHDPlusBurnComponents,BurnLineEvent,ReachCode,See NHDFlowline,
+NHDPlusBurnComponents,BurnLineEvent,ReachSMDat,See NHDReachCodeComID,
+NHDPlusBurnComponents,BurnLineEvent,FromMeas,Downstream BurnLineEvent Measure (m-value),"Num(8,5) "
+NHDPlusBurnComponents,BurnLineEvent,ToMeas,Upstream BurnLineEvent Measure (m-value),"Num(8,5) "
+NHDPlusBurnComponents,BurnLineEvent,StartFlag,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,LengthKm,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,BurnLenKm,Length of BurnLineEvent feature,"Num(7,3) "
+NHDPlusBurnComponents,BurnLineEvent,Divergence,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,StreamLevel,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,StreamCalc,See PlusFlowlineVAA,
+NHDPlusBurnComponents,BurnLineEvent,StatusFlag,Reserved for use during NHDPlusV2 Build/Refresh Tools Processing,Char(1)
+NHDPlusBurnComponents,BurnLineEvent,InRPU,RPU that contains the BurnLineEvent feature,Text(8)
+NHDPlusBurnComponents,BurnLineEvent,GridCode,GridCode assigned to the NHDFlowline feature,Long Integer
+NHDPlusBurnComponents,BurnLineEvent,Catchment,"“Y” – line will receive a catchment, “N” - will not receive a catchment ",Text(1)
+NHDPlusBurnComponents,BurnLineEvent,Burn,"“Y” – line will be used for hydro-enforcement, “N” - will not be used for hydro-enforcement ",Text(1)
+NHDPlusBurnComponents,BurnWaterbody,Field Name,Description,Format
+NHDPlusBurnComponents,BurnWaterbody,ComID,Common identifier of the NHDWaterbody feature or NHDArea feature,Long Integer
+NHDPlusBurnComponents,BurnWaterbody,SourceFC,"NHD Feature Class – “NHDWaterbody”, “NHDArea” ",Character(20)
+NHDPlusBurnComponents,BurnWaterbody,FCode,See NHDWaterbody or NHDArea,
+NHDPlusBurnComponents,BurnWaterbody,ReachCode,See NHDWaterbody,
+NHDPlusBurnComponents,BurnWaterbody,ReachSMDate,See NHDReachCodeComID,
+NHDPlusBurnComponents,BurnWaterbody,OnOffNet,"Hydro Enforcement Flag - 1 = Hydro Enforced (i.e. On network or contains a sink), 0 = not Hydro Enforced ",Num(1)
+NHDPlusBurnComponents,BurnWaterbody,PurpCode,Purpose Code,Char(2)
+NHDPlusBurnComponents,BurnWaterbody,PurpDesc,Purpose Description,Char(254)
+NHDPlusBurnComponents,Sink,Field Name,Description,Format
+NHDPlusBurnComponents,Sink,SinkID,Unique identifier for Sink point,Long Integer
+NHDPlusBurnComponents,Sink,PurpCode,"Purpose of Sink, See Appendix E ",Char(2)
+NHDPlusBurnComponents,Sink,PurpDesc,Description of Sink,Char(254)
+NHDPlusBurnComponents,Sink,StatusFlag,Reserved for use during NHDPlusV2 Build/Refresh Tools Processing,Char(1)
+NHDPlusBurnComponents,Sink,FeatureID,"The id of a feature in another feature class.  This is a 
+ComID, if the feature is in NHDFLowline or  
+      NHDWaterbody 
+Gaz_ID, if the feature is in WBD_Subwatershed 
+PolyID, if the feature is in BurnAddWaterbody ",Long Integer
+NHDPlusBurnComponents,Sink,SourceFC,"The feature class of the feature referenced in FeatureID.  
+Values are “NHDFlowline”, “NHDWaterbody”, 
+“WBD_Subwatershed”, and “BurnAddWaterbody”. ",Char(20)
+NHDPlusBurnComponents,Sink,FDate,"If SourceFC = “NHDFlowline”, this is the NHDFlowline.Fdate value. ",Date
+NHDPlusBurnComponents,Sink,GridCode,GridCode assigned to the Sink point,Long Integer
+NHDPlusBurnComponents,Sink,InRPU,RPU ID that holds the Sink.,Char(8)
+NHDPlusBurnComponents,Sink,Catchment,"“Y” – line will receive a catchment, “N” or Null - will not receive a catchment ",Text(1)
+NHDPlusBurnComponents,Sink,Burn,"“Y” – line will be used for hydro-enforcement, “N” or Null - will not be used for hydro-enforcement ",Text(1)
+NHDPlusBurnComponents,Wall,Field Name,Description,Format
+NHDPlusBurnComponents,Wall,WallID,Unique identifier for wall line,Long Integer
+NHDPlusBurnComponents,Wall,Source_Id,Place holder for WBD unique identifier (not part of the WBD data model used for NHDPlus),Long Integer
+NHDPlusBurnComponents,LandSea,Field Name,Description,Format
+NHDPlusBurnComponents,LandSea,LandSeaID,Unique identifier for land/sea polygon,Long Integer
+NHDPlusBurnComponents,LandSea,Land,"A numeric code to identify land/sea/estuary areas.  1 = Land, -2 = Sea, -1 = Estuary ",Short Integer
+NHDPlusBurnComponents,BurnAddLine,Field Name,Description,Format
+NHDPlusBurnComponents,BurnAddLine,LineID,Unique identifier for wall line,Long Integer
+NHDPlusBurnComponents,BurnAddLine,PurpCode,Purpose of added line. See Appendix E.,Text(2)
+NHDPlusBurnComponents,BurnAddLine,PurpDesc,Description of added line.,Text(254)
+NHDPlusBurnComponents,BurnAddLine,GridCode,"Manually assigned gridcodes. See Appendix A, Step 15. ",Long Integer
+NHDPlusBurnComponents,BurnAddLine,StreamLeve,Manually assigned stream level value. See Appendix A.,Short Integer
+NHDPlusBurnComponents,BurnAddLine,HydroSeq,See PlusFlowLineVAA; a manually assigned number that puts the additional line is the proper hydrologic sequence with BurnLineEvent.,Long Integer
+NHDPlusBurnComponents,BurnAddWaterbody,Field Name,Description,Format
+NHDPlusBurnComponents,BurnAddWaterbody,PolyID,Unique identifier for wall line,Long Integer
+NHDPlusBurnComponents,BurnAddWaterbody,PurpCode,Purpose of added waterbody (see Appendix E),Text(2)
+NHDPlusBurnComponents,BurnAddWaterbody,PurpDesc,Description of added waterbody,Text(254)
+NHDPlusBurnComponents,BurnAddWaterbody,OnOffNet,"Hydro Enforcement Flag - 1 = Hydro Enforced (i.e. On network or contains a sink), 0 = not Hydro Enforced ",Short Integer
+NHDPlusBurnComponents,BurnAddWaterbody,FCode,See NHDFCode,
+EROMExtension,EROM_MA0001,Field Name,Description,Format
+EROMExtension,EROM_MA0001,ComID,Common identifier of an NHDFlowline feature,Long Integer
+EROMExtension,EROM_MA0001,Q0001A,Flow from runoff (cfs),"Num(14,3) "
+EROMExtension,EROM_MA0001,V0001A,Velocity for Q0001A (fps),"Num(14,5) "
+EROMExtension,EROM_MA0001,QIncr0001A,Incremental Flow from runoff (cfs),"Num(13,5) "
+EROMExtension,EROM_MA0001,Q0001B,Flow with Excess ET (cfs),"Num(14,3) "
+EROMExtension,EROM_MA0001,V0001B,Velocity for Q0001B (fps),"Num(13,5) "
+EROMExtension,EROM_mm0001,Field Name,Description,Format
+EROMExtension,EROM_mm0001,ComID,Common identifier of an NHDFlowline feature,Long Integer
+EROMExtension,EROM_mm0001,Q0001A,Flow from runoff (cfs),"Num(14,3) "
+EROMExtension,EROM_mm0001,V0001A,Velocity for Q0001A (fps),"Num(14,5) "
+EROMExtension,EROM_mm0001,QIncr0001A,Incremental Flow from runoff (cfs),"Num(13,5) "
+EROMExtension,EROM_mm0001,Q0001B,Flow with Excess ET (cfs),"Num(14,3) "
+EROMExtension,EROM_mm0001,V0001B,Velocity for Q0001B (fps),"Num(13,5) "
+EROMExtension,EROMQA_0001,QIncr0001B,Incremental Flow With Excess ET (cfs),"Num(13,5) "
+EROMExtension,EROMQA_0001,Q0001C,"Flow with Reference Gage Regression applied to Q0001B 
+(cfs) ","Num(14,3) "
+EROMExtension,EROMQA_0001,V0001C,Velocity for Q0001C (fps),"Num(13,5) "
+EROMExtension,EROMQA_0001,QIncr0001C,"Incremental Flow by subtracting the sum of upstream 
+Q<eeee>C flows from the sum of the upstream Q0001C 
+(cfs) ","Num(13,5) "
+EROMExtension,EROMQA_0001,Q0001D,Flow with PlusFlowAR (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,V0001D,Velocity for Q0001D (fps),"Num(13,5) "
+EROMExtension,EROMQA_0001,QIncr0001D,Incremental flow with PlusFlowAR (cfs),"Num(13,5) "
+EROMExtension,EROMQA_0001,Q0001E,Flow from gage adjustment (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,V0001E,Velocity from gage adjustment (fps),"Num(13,5) "
+EROMExtension,EROMQA_0001,QIncr0001E,Incremental flow from gage adjustment (cfs),"Num(13,5) "
+EROMExtension,EROMQA_0001,Q0001F,Flow from gage sequestration step (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,QIncr0001F,Incremental flow from gage sequestration step (cfs),"Num(13,5) "
+EROMExtension,EROMQA_0001,ARQ0001Nav,PlusflowAR flow not available on flowline (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,Temp0001,Catchment temperature  (Deg. C),"Num(14,5) "
+EROMExtension,EROMQA_0001,PPT0001,Catchment precipitation (mm),"Num(14,5) "
+EROMExtension,EROMQA_0001,PET0001,Catchment PET (mm),"Num(14,5) "
+EROMExtension,EROMQA_0001,QLoss0001,Catchment flow loss from Excess ET (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,QG0001Adj,Gage adjustment flow (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,QG0001Nav,Gage adjustment flow not available ( cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,DivDASqKm,Divergence-routed cumulative area,"Num(14,6) "
+EROMExtension,EROMQA_0001,AreaSqKm,See Catchment,"Num(14,6) "
+EROMExtension,EROMQA_0001,Lat,Average Latitude of catchment in decimal degrees,"Num(9,5) "
+EROMExtension,EROMQA_0001,GageAdj,"Flag indicating that Q<eeee>E and Qincr0001E have been adjusted by gage flow. “0” = not adjusted, “2” = adjusted, including the NHDFlowline feature at the gage and the NHDFlowline features upstream. ",Text(1)
+EROMExtension,EROMQA_0001,AvgQAdj,Gage Q adjusted for bottom of an NHDflowline feature (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,SMGageID,The ID of the gage located on NHDFlowline feature,Text(16)
+EROMExtension,EROMQA_0001,SMGageq,Gaged flow measured by the gage on NHDFlowline feature (cfs),"Num(14,3) "
+EROMExtension,EROMQA_0001,ETFract1,Excess ET Fraction 1,"Num(5,3) "
+EROMExtension,EROMQA_0001,ETFract2,Excess ET Fraction 2,"Num(5,3) "
+EROMExtension,EROMQA_0001,A,Reference gage regression coefficient “a”,"Num(11,5) "
+EROMExtension,EROMQA_0001,B,Reference gage regression coefficient “b”,"Num(11,5) "
+EROMExtension,EROMQA_0001,BCF,Reference gage regression Bias Correction Factor,"Num(11,5) "
+EROMExtension,EROMQA_0001,r2,Reference gage regression Log-Log r2,"Num(11,4) "
+EROMExtension,EROMQA_0001,SER,Reference gage regression log-log Standard Error of the Regression,"Num(11,5) "
+EROMExtension,EROMQA_0001,NRef,Number of Reference gages used in the regression,"Num(5,4) "
+EROMExtension,EROMQA_0001,GageSeqP,Proportion of gages to sequester in the gage sequestration step. Values 0 to 1.,"Num(5,3) "
+EROMExtension,EROMQA_0001,GageSeq,"0 = gage not sequestered, 1= gage sequestered ","Num(5,3) "
+EROMExtension,EROMQA_MA0001,Field Name,Description,Format
+EROMExtension,EROMQA_MA0001,ComID,Common identifier of an NHDFlowline feature,Long Integer
+EROMExtension,EROMQA_MA0001,GageID,The NWIS gageid,Text(16)
+EROMExtension,EROMQA_MA0001,GageRef,Text field: “Ref” = Falcone Reference Gage. Blank = not Reference gage.,Char(3)
+EROMExtension,EROMQA_MA0001,DivDASqKm,The NHDPlusV2 divergence-routed drainage area at the bottom of the flowline. (sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_E,The Gage Flow (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_A,Cumulative runoff (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_B,Q_A – Excess ET (EET) (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_C,Q_A - EET +/- Refgage Regression Adjustment (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_D,Q_A – EET +/ Refgage Regression Adjustment +/- PlusFlowAR (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_EUnitRo,Q_E / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_AUnitRo,Q_A / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_BUnitRo,Q_B / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_CUnitRo,Q_C / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_DUnitRo,Q_D / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_ADelta,Q_E – Q_A (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_BDelta,Q_E – Q_B (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_CDelta,Q_E – Q_C (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_DDelta,Q_E – Q_D (cfs),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_AURoDelt,Q_Eunitro – Q_Aunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_BURoDelt,Q_Eunitro – Q_Bunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_CURoDelt,Q_Eunitro – Q_Cunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_MA0001,Q_DURoDelt,Q_Eunitro – Q_Dunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Field Name,Description,Format
+EROMExtension,EROMQA_mm0001,ComID,Common identifier of an NHDFlowline feature,Long Integer
+EROMExtension,EROMQA_mm0001,GageID,The NWIS gageid,Text(16)
+EROMExtension,EROMQA_mm0001,GageRef,Text field: “Ref” = Falcone Reference Gage. Blank = not Reference gage.,Char(3)
+EROMExtension,EROMQA_mm0001,DivDASqKm,The NHDPlusV2 divergence-routed drainage area at the bottom of the flowline. (sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_E,The Gage Flow (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_A,Cumulative runoff (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_B,Q_A – Excess ET (EET) (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_C,Q_A - EET +/- Refgage Regression Adjustment (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_D,Q_A – EET +/ Refgage Regression Adjustment +/- PlusFlowAR (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_EUnitRo,Q_E / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_AUnitRo,Q_A / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_BUnitRo,Q_B / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_CUnitRo,Q_C / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_DUnitRo,Q_D / DivDASqKm (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_ADelta,Q_E – Q_A (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_BDelta,Q_E – Q_B (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_CDelta,Q_E – Q_C (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_DDelta,Q_E – Q_D (cfs),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_AURoDelt,Q_Eunitro – Q_Aunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_BURoDelt,Q_Eunitro – Q_Bunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_CURoDelt,Q_Eunitro – Q_Cunitro (cfs/sqkm),"Num(14,3) "
+EROMExtension,EROMQA_mm0001,Q_DURoDelt,Q_Eunitro – Q_Dunitro (cfs/sqkm),"Num(14,3) "
+VogelExtension,VogelFlow,Field Name,Description,Format
+VogelExtension,VogelFlow,ComID,Common identifier of an NHDFlowline feature,Long Integer
+VogelExtension,VogelFlow,MAFlowV,Mean Annual Flow (cfs) at bottom of flowline using Vogel Method.,"Num(14,7) "
+VogelExtension,VogelFlow,MAVelV,Mean Annual Velocity (fps) at bottom of flowline using Jobson Method (1996) with MAFlowV.,"Num(8,5) "
+VPUAttributeExtension,IncrLat,Field Name,Description,Format
+VPUAttributeExtension,IncrLat,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+VPUAttributeExtension,IncrLat,MissDataA,Area of Catchment with no data,"Num(13,4) "
+VPUAttributeExtension,IncrLat,LatVT,"Value Type, “V” meaning average ",Char(1)
+VPUAttributeExtension,IncrLat,LatV,Mean latitude in degrees,"Num(5,2) "
+VPUAttributeExtension,IncrLat,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+VPUAttributeExtension,ROMA,Field Name,Description,Format
+VPUAttributeExtension,ROMA,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+VPUAttributeExtension,ROMA,MissDataA,Area of Catchment with no data,"Num(13,4) "
+VPUAttributeExtension,ROMA,RunOffVT,"Value Type, “V” meaning average ",Char(1)
+VPUAttributeExtension,ROMA,RunOffV,Mean runoff  (mm),"Num(5,2) "
+VPUAttributeExtension,ROMA,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+VPUAttributeExtension,ROMMmm,Field Name,Description,Format
+VPUAttributeExtension,ROMMmm,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+VPUAttributeExtension,ROMMmm,MissDataA,Area of Catchment with no data,"Num(13,4) "
+VPUAttributeExtension,ROMMmm,RunOffVT,"Value Type, “V” meaning average ",Char(1)
+VPUAttributeExtension,ROMMmm,RunOffV,Mean runoff  (mm),"Num(5,2) "
+VPUAttributeExtension,ROMMmm,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+NHDPlusAttributeExtension,CumTotROMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotROMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotROMA,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotROMA,RunOffCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotROMA,RunOffCV,Mean Runoff in area upstream of the bottom of flowline (mm),"Num(5,2) "
+NHDPlusAttributeExtension,CumTotROMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivROMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivROMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivROMA,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivROMA,RunOffCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivROMA,RunOffCV,Mean Runoff in area upstream of the bottom of flowline (mm),"Num(5,2) "
+NHDPlusAttributeExtension,CumDivROMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumTotROMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotROMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotROMMmm,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotROMMmm,RunOffCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotROMMmm,RunOffCV,Mean Runoff in area upstream of the bottom of flowline (mm),"Num(5,2) "
+NHDPlusAttributeExtension,CumTotROMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivROMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivROMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivROMMmm,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivROMMmm,RunOffCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivROMMmm,RunOffCV,Mean Runoff in area upstream of the bottom of flowline (mm),"Num(5,2) "
+NHDPlusAttributeExtension,CumDivROMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,IncrPrecipMA,Field Name,Description,Format
+NHDPlusAttributeExtension,IncrPrecipMA,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+NHDPlusAttributeExtension,IncrPrecipMA,MissDataA,Area of Catchment with no data,"Num(13,4) "
+NHDPlusAttributeExtension,IncrPrecipMA,PrecipVT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,IncrPrecipMA,PrecipV,Mean precipitation in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,IncrPrecipMA,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+NHDPlusAttributeExtension,IncrPrecipMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,IncrPrecipMMmm,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+NHDPlusAttributeExtension,IncrPrecipMMmm,MissDataA,Area of Catchment with no data,"Num(13,4) "
+NHDPlusAttributeExtension,IncrPrecipMMmm,PrecipVT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,IncrPrecipMMmm,PrecipV,Mean precipitation in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,IncrPrecipMMmm,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+NHDPlusAttributeExtension,CumTotPrecipMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotPrecipMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotPrecipMA,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotPrecipMA,PrecipCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotPrecipMA,PrecipCV,Mean annual precipitation in area upstream of the bottom of flowline in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumTotPrecipMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivPrecipMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivPrecipMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivPrecipMA,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivPrecipMA,PrecipCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivPrecipMA,PrecipCV,Mean annual precipitation in area upstream of the bottom of flowline in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumDivPrecipMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumTotPrecipMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotPrecipMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotPrecipMMmm,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotPrecipMMmm,PrecipCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotPrecipMMmm,PrecipCV,Mean annual precipitation in area upstream of the bottom of flowline in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumTotPrecipMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivPrecipMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivPrecipMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivPrecipMMmm,MissDataA,Area of Drainage Area with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivPrecipMMmm,PrecipCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivPrecipMMmm,PrecipCV,Mean annual precipitation in area upstream of the bottom of flowline in millimeters * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumDivPrecipMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,IncrTempMA,Field Name,Description,Format
+NHDPlusAttributeExtension,IncrTempMA,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+NHDPlusAttributeExtension,IncrTempMA,MissDataA,Area of Catchments with no data,"Num(13,4) "
+NHDPlusAttributeExtension,IncrTempMA,TempVT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,IncrTempMA,TempV,Mean annual temperature in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,IncrTempMA,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+NHDPlusAttributeExtension,IncrTempMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,IncrTempMMmm,FeatureID,FeatureID of an NHDPlusV2 Catchment,Long Integer
+NHDPlusAttributeExtension,IncrTempMMmm,MissDataA,Area of Catchments with no data,"Num(13,4) "
+NHDPlusAttributeExtension,IncrTempMMmm,TempVT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,IncrTempMMmm,TempV,Mean annual temperature in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,IncrTempMMmm,HydroSeq,"When FeatureID represents an NHDFlowline feature, the 
+Hydrologic Sequence Number of the feature; When FeatureID represents a Sink, set to -9998 ",Num(11)
+NHDPlusAttributeExtension,CumTotTempMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotTempMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotTempMA,MissDataA,Area of Drainage Areas with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotTempMA,TempVCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotTempMA,TempVC,Mean annual temperature in area upstream of the bottom of  flowline in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumTotTempMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivTempMA,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivTempMA,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivTempMA,MissDataA,Area of Drainage Areas with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivTempMA,TempVCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivTempMA,TempVC,Mean annual temperature in area upstream of the bottom of  flowline in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumDivTempMA,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumTotTempMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumTotTempMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumTotTempMMmm,MissDataA,Area of Drainage Areas with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumTotTempMMmm,TempVCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumTotTempMMmm,TempVC,Mean annual temperature in area upstream of the bottom of  flowline in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumTotTempMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+NHDPlusAttributeExtension,CumDivTempMMmm,Field Name,Description,Format
+NHDPlusAttributeExtension,CumDivTempMMmm,FeatureID,"ComID of an NHDFlowline feature and, where applicable, FeatureID of an NHDPlusV2 Catchment ",Long Integer
+NHDPlusAttributeExtension,CumDivTempMMmm,MissDataA,Area of Drainage Areas with no data,"Num(13,4) "
+NHDPlusAttributeExtension,CumDivTempMMmm,TempVCT,"Value Type, “V” meaning average ",Char(1)
+NHDPlusAttributeExtension,CumDivTempMMmm,TempVC,Mean annual temperature in area upstream of the bottom of  flowline in degrees centigrade * 100,"Num(5,2) "
+NHDPlusAttributeExtension,CumDivTempMMmm,Hydroseq,Hydrologic Sequence Number of an NHDFlowline feature,Num(11)
+,,,,
