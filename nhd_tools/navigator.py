@@ -293,7 +293,8 @@ def build_navigators():
         nhd_path = condensed_nhd_path.format('nav', region, 'reach')
         if overwrite or not os.path.exists(nhd_path):
             reach_table, _ = \
-                condense_nhd(region, navigator_map_path, 'nav', 'internal_name')
+                condensed = condense_nhd(region, navigator_map_path, 'internal_name')
+            write_nhd.condensed_nhd('nav', region, reach_table)
         else:
             reach_table = read_nhd.condensed_nhd('nav', region, 'reach')
 

@@ -9,7 +9,7 @@ from paths_nhd import nhd_region_dir
 from efed_lib_hydro.read import dbf, report
 
 
-def condense_nhd(region, field_map_path, run_id, rename_field='internal_name', write=False):
+def condense_nhd(region, field_map_path, rename_field='internal_name'):
     """
     Pull data from NHD Plus dbf files and consolidate in a .csv file that is smaller to store and easier to read.
     Tables and fields to be pulled are specified in an NHD map table. A template may be found in Tables/nhd_map.csv.
@@ -56,7 +56,6 @@ def condense_nhd(region, field_map_path, run_id, rename_field='internal_name', w
             lake_table = lake_table.merge(table, on='wb_comid', how='outer') if lake_table is not None else table
         else:
             raise ValueError(f"Invalid feature type {feature_type}. Must be 'reach' or 'waterbody'")
-    write_nhd.condensed_nhd(run_id, region, reach_table, lake_table)
     return reach_table, lake_table
 
 

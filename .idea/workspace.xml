@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c81ef0-fba1-4e24-9399-9804e20b0f05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro/read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/navigator.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/navigator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/process_nhd.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/process_nhd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/write_nhd.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/write_nhd.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +30,41 @@
     <SUITE FILE_PATH="coverage/hydro$condenser_tester.coverage" NAME="condenser_tester Coverage Results" MODIFIED="1600711584221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1326">
+              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -60,6 +97,7 @@
       <find>exit</find>
       <find>np</find>
       <find>idea</find>
+      <find>condense_nhd</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -100,15 +138,15 @@
         <option value="$PROJECT_DIR$/weather_files/weather.py" />
         <option value="$PROJECT_DIR$/nhd_tools/read_nhd.py" />
         <option value="$PROJECT_DIR$/dev/sandbox.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
         <option value="$PROJECT_DIR$/nhd_tools/paths_nhd.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/navigator.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/write_nhd.py" />
         <option value="$PROJECT_DIR$/dev/shaper.py" />
         <option value="$PROJECT_DIR$/dev/condenser_tester.py" />
         <option value="$PROJECT_DIR$/Tables/nhd_map_original.csv" />
         <option value="$PROJECT_DIR$/dev/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/navigator.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/write_nhd.py" />
       </list>
     </option>
   </component>
@@ -134,7 +172,7 @@
             <path>
               <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
               <item name="hydro" type="462c0819:PsiDirectoryNode" />
-              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="nhd_tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
@@ -156,13 +194,13 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\opp-efed\hydro" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="A:\opp-efed\hydro\weather_files" />
       <recent name="A:\opp-efed\hydro\dev" />
       <recent name="A:\opp-efed\hydro\nhd_tools" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="A:\opp-efed\hydro" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -319,15 +357,16 @@
       <workItem from="1594237303997" duration="243000" />
       <workItem from="1600263618907" duration="226000" />
       <workItem from="1600283798285" duration="57868000" />
-      <workItem from="1600780650888" duration="421000" />
+      <workItem from="1600780650888" duration="1160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88406000" />
+    <option name="totallyTimeSpent" value="89145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2931174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -560,22 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="59" column="19" lean-forward="true" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-          <folding>
-            <element signature="e#295#537#1" />
-            <element signature="e#542#579#0" />
-            <element signature="e#2791#3541#0" />
-            <element signature="e#3581#3806#0" />
-            <element signature="e#3847#4654#0" />
-            <element signature="e#5129#6265#0" />
-            <element signature="e#5129#5326#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/paths_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -600,16 +623,6 @@
       <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/dev/condenser_tester.py" />
-    <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dev/shaper.py" />
     <entry file="file://$PROJECT_DIR$/weather_files/write_weather.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -617,16 +630,6 @@
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -677,6 +680,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
           <caret line="64" column="5" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1326">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
         </state>
       </provider>
     </entry>
