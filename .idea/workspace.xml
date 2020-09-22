@@ -2,41 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c81ef0-fba1-4e24-9399-9804e20b0f05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/navigator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/params_nhd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/paths_nhd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/read_nhd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nhd_tools/write_nhd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather_files/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather_files/paths_weather.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather_files/read_weather.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather_files/write_weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hydro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hydro.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0_build_hydro_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/0_build_hydro_files.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0_build_weather_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_files/0_build_weather_files.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/fields_and_qc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/fields_and_qc.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tables/nhd_map.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Tables/nhd_map.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/nhd_dict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/sandbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/sandbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/test_navigator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/test_navigator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/test_weather_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/test_weather_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/testfile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro/read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nhd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paths_hydro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/process_nhd.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/process_nhd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read_hydro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities_hydro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather_files/weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_hydro.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +27,7 @@
     <SUITE FILE_PATH="coverage/hydro$condenser_tester.coverage" NAME="condenser_tester Coverage Results" MODIFIED="1600711584221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,6 +59,7 @@
       <find>ex</find>
       <find>exit</find>
       <find>np</find>
+      <find>idea</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -137,6 +106,9 @@
         <option value="$PROJECT_DIR$/nhd_tools/write_nhd.py" />
         <option value="$PROJECT_DIR$/dev/shaper.py" />
         <option value="$PROJECT_DIR$/dev/condenser_tester.py" />
+        <option value="$PROJECT_DIR$/Tables/nhd_map_original.csv" />
+        <option value="$PROJECT_DIR$/dev/.gitignore" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -167,17 +139,7 @@
             <path>
               <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
               <item name="hydro" type="462c0819:PsiDirectoryNode" />
-              <item name="nhd_tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hydro" type="462c0819:PsiDirectoryNode" />
               <item name="Tables" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hydro" type="462c0819:PsiDirectoryNode" />
-              <item name="weather_files" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -357,16 +319,17 @@
       <workItem from="1594237303997" duration="243000" />
       <workItem from="1600263618907" duration="226000" />
       <workItem from="1600283798285" duration="57868000" />
+      <workItem from="1600780650888" duration="421000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87985000" />
+    <option name="totallyTimeSpent" value="88406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28825912" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2931174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -455,16 +418,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unpack_nhd.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv___jb_tmp___">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/unpack_nhd.py" />
+    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv___jb_tmp___" />
     <entry file="file://$PROJECT_DIR$/Tables/fields_and_qc.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -489,25 +444,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PlusFlow_backup.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlusWaterbodyLakeMorphology_backup.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev/nhd_dict.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/condense_nhd.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/PlusFlow_backup.csv" />
+    <entry file="file://$PROJECT_DIR$/PlusWaterbodyLakeMorphology_backup.csv" />
+    <entry file="file://$PROJECT_DIR$/dev/nhd_dict.py" />
+    <entry file="file://$PROJECT_DIR$/condense_nhd.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Continuum/anaconda3/Lib/site-packages/pandas/core/indexing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -550,78 +490,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/paths_hydro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/read_hydro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/write_hydro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utilities_hydro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="195" selection-start-line="195" selection-end-line="195" />
-          <folding>
-            <element signature="e#247#378#0" />
-            <element signature="e#413#4522#0" />
-            <element signature="e#668#1456#0" />
-            <element signature="e#1244#1338#0" />
-            <element signature="e#1365#1416#0" />
-            <element signature="e#1520#2277#0" />
-            <element signature="e#1619#2006#0" />
-            <element signature="e#1853#2006#0" />
-            <element signature="e#2033#2237#0" />
-            <element signature="e#2128#2237#0" />
-            <element signature="e#2386#3115#0" />
-            <element signature="e#2585#2688#0" />
-            <element signature="e#2863#2998#0" />
-            <element signature="e#3173#3968#0" />
-            <element signature="e#3273#3383#0" />
-            <element signature="e#3410#3614#0" />
-            <element signature="e#3658#3968#0" />
-            <element signature="e#4062#4223#0" />
-            <element signature="e#4269#4343#0" />
-            <element signature="e#4389#4522#0" />
-            <element signature="e#4556#6760#0" />
-            <element signature="e#4606#4667#0" />
-            <element signature="e#4747#5496#0" />
-            <element signature="e#5205#5360#0" />
-            <element signature="e#5541#5593#0" />
-            <element signature="e#5645#5697#0" />
-            <element signature="e#5746#5812#0" />
-            <element signature="e#5868#5922#0" />
-            <element signature="e#5968#6060#0" />
-            <element signature="e#6113#6211#0" />
-            <element signature="e#6259#6412#0" />
-            <element signature="e#6275#6411#0" />
-            <element signature="e#6459#6481#0" />
-            <element signature="e#6532#6555#0" />
-            <element signature="e#6605#6658#0" />
-            <element signature="e#6709#6760#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/paths_hydro.py" />
+    <entry file="file://$PROJECT_DIR$/read_hydro.py" />
+    <entry file="file://$PROJECT_DIR$/write_hydro.py" />
+    <entry file="file://$PROJECT_DIR$/utilities_hydro.py" />
     <entry file="file://$PROJECT_DIR$/nhd_tools/acquire_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -629,19 +501,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/testfile.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev/with_outlets.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="149" selection-start-line="13" selection-start-column="149" selection-end-line="13" selection-end-column="149" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/testfile.txt" />
+    <entry file="file://$PROJECT_DIR$/dev/with_outlets.csv" />
     <entry file="file://$PROJECT_DIR$/nhd_tools/params_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -649,25 +510,6 @@
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3">
-          <column index="0" width="100" />
-          <column index="1" width="100" />
-          <column index="2" width="100" />
-          <column index="3" width="100" />
-          <column index="4" width="100" />
-          <column index="5" width="100" />
-          <column index="6" width="100" />
-          <column index="7" width="100" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="340">
-          <caret line="1488" column="24" selection-start-line="1488" selection-start-column="24" selection-end-line="1490" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -757,13 +599,7 @@
     <entry file="file://$PROJECT_DIR$/nhd_tools/nodes.csv">
       <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/condenser_tester.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/condenser_tester.py" />
     <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -774,9 +610,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/shaper.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/shaper.py" />
     <entry file="file://$PROJECT_DIR$/weather_files/write_weather.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -794,6 +628,55 @@
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/nhd_map_original.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="397">
+          <caret line="1859" column="88" selection-start-line="1859" selection-start-column="88" selection-end-line="1859" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/sam_map_lake.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3">
+          <column index="0" width="100" />
+          <column index="1" width="100" />
+          <column index="2" width="100" />
+          <column index="3" width="100" />
+          <column index="4" width="100" />
+          <column index="5" width="100" />
+          <column index="6" width="100" />
+          <column index="7" width="100" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-5913">
+          <caret line="1488" column="24" selection-start-line="1488" selection-start-column="24" selection-end-line="1490" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="5" />
         </state>
       </provider>
     </entry>
