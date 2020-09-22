@@ -1,5 +1,5 @@
 import pandas as pd
-from weather import WeatherArray
+from weather_files.weather import WeatherArray
 
 
 def read_old(s):

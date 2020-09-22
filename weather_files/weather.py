@@ -4,15 +4,11 @@ import scipy.interpolate
 import numpy as np
 import datetime as dt
 
-<<<<<<< HEAD
-import write_hydro
-import read_hydro
-=======
-import write_hydro as write
-import read_hydro as read
->>>>>>> 4657bb242ca4fe4849977f07c96ac9b57d3dfaa3
-from paths_hydro import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
-from utilities_hydro import MemoryMatrix, DateManager, report
+import read_weather
+import write_weather
+
+from paths_weather import met_grid_path, ncep_table_path, weather_array_path, ncep_array_path
+from efed_lib_hydro.utilities import MemoryMatrix, DateManager, report
 
 ncep_vars = ["tmin.2m", "tmax.2m", "air.2m", "dswrf.ntat", "uwnd.10m", "vwnd.10m"]
 
@@ -27,8 +23,8 @@ class WeatherCubeBuilder(object):
 
         # Get the coordinates for all precip stations being used and write to file
         self.precip_points = map_stations(bounds)
-        #self.populate(bounds)
-        write_hydro.keyfile(self.precip_points, self.years, self.output_header)
+        # self.populate(bounds)
+        write_weather.keyfile(self.precip_points, self.years, self.output_header)
 
     def populate(self, bounds):
 
@@ -45,14 +41,14 @@ class WeatherCubeBuilder(object):
                 ncep_table = pd.read_csv(intermediate)
                 ncep_table['time'] = pd.to_datetime(ncep_table['time'])
             else:
-                ncep_table = read_hydro.ncep(year, ncep_vars, bounds)
-                write_hydro.ncep_table(ncep_table, year)
+                ncep_table = read_weather.ncep(year, ncep_vars, bounds)
+                write_weather.ncep_table(ncep_table, year)
 
             # Calculate PET and eliminate unneeded headings
             ncep_table = process_ncep(ncep_table)
 
             # Load precip table
-            precip_table = read_hydro.precip(year)
+            precip_table = read_weather.precip(year)
             precip_table = self.precip_points.merge(precip_table, how='left', on=['lat', 'lon'])
 
             # Determine the offset in days between the start of the year and the start of all years
@@ -93,7 +89,7 @@ class NcepBuilder(object):
 
         # Get the coordinates for all precip stations being used and write to file
         self.populate(bounds)
-        write_hydro.keyfile(self.points, self.years, self.output_header, True)
+        write_weather.keyfile(self.points, self.years, self.output_header, True)
 
     def get_points(self):
         test = ncep_table_path.format(self.years[0])
@@ -116,8 +112,8 @@ class NcepBuilder(object):
                 ncep_table = pd.read_csv(intermediate)
                 ncep_table['time'] = pd.to_datetime(ncep_table['time'])
             else:
-                ncep_table = read_hydro.ncep(year, ncep_vars, bounds)
-                write_hydro.ncep_table(ncep_table, year)
+                ncep_table = read_weather.ncep(year, ncep_vars, bounds)
+                write_weather.ncep_table(ncep_table, year)
 
             # Calculate PET and eliminate unneeded headings
             ncep_table = process_ncep(ncep_table)
@@ -147,7 +143,7 @@ class NcepBuilder(object):
 class WeatherArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='stationID'):
         # Set row/column offsets
-        start_date, end_date, self.header, points = read_hydro.keyfile()
+        start_date, end_date, self.header, points = read_weather.keyfile()
         self.points = pd.DataFrame(points, columns=['weather_grid', 'stationID', 'lat', 'lon']).set_index(index_col)
 
         # Set dates
@@ -170,14 +166,11 @@ class WeatherArray(MemoryMatrix, DateManager):
 
 class NcepArray(MemoryMatrix, DateManager):
     def __init__(self, index_col='site_index'):
-        # Set row/column offsets
-<<<<<<< HEAD
-        start_date, end_date, self.header, points = read_hydro.keyfile()
-        print(points)
-=======
-        start_date, end_date, self.header, points = read.keyfile('ncep')
 
->>>>>>> 4657bb242ca4fe4849977f07c96ac9b57d3dfaa3
+        # Set row/column offsets
+
+        start_date, end_date, self.header, points = read_weather.keyfile()
+
         self.points = pd.DataFrame(points, columns=['lat', 'lon', 'site_index']).set_index(index_col)
 
         # Set dates
@@ -197,49 +190,47 @@ class NcepArray(MemoryMatrix, DateManager):
             data = pd.DataFrame(data.T, columns=self.header, index=self.dates)
         return data
 
+    def process_ncep(table):
+        # Convert date-times to dates
+        table['date'] = table['time'].dt.normalize()
 
-def process_ncep(table):
-    # Convert date-times to dates
-    table['date'] = table['time'].dt.normalize()
+        # Adjust column names
+        table.rename(columns={"air": "tavg", "dswrf": "solar_rad"}, inplace=True)
 
-    # Adjust column names
-    table.rename(columns={"air": "tavg", "dswrf": "solar_rad"}, inplace=True)
+        # Adjust units
+        for var in 'tmin', 'tmax', 'tavg':
+            table[var] -= 273.15  # K -> deg C
+        table['solar_rad'] = (
+                                         table.solar_rad / 1e6) * 86400. * 0.408  # W/m2 to mm/d using 1 MJ/m2-d = 0.408 mm/d per FAO
 
-    # Adjust units
-    for var in 'tmin', 'tmax', 'tavg':
-        table[var] -= 273.15  # K -> deg C
-    table['solar_rad'] = (table.solar_rad / 1e6) * 86400. * 0.408  # W/m2 to mm/d using 1 MJ/m2-d = 0.408 mm/d per FAO
+        # Compute vector wind speed from uwind and vwind in m/s to cm/s
+        table['wind'] = np.sqrt((table.pop('uwnd') ** 2) + (table.pop('vwnd') ** 2)) * 100.
 
-    # Compute vector wind speed from uwind and vwind in m/s to cm/s
-    table['wind'] = np.sqrt((table.pop('uwnd') ** 2) + (table.pop('vwnd') ** 2)) * 100.
+        # Calculate potential evapotranspiration using Hargreaves-Samani method
+        table['pet'] = \
+            (0.0023 * table.solar_rad * (table.tavg + 17.8) * ((table.tmax - table.tmin) ** 0.5)) / 10  # mm/d -> cm/d
 
-    # Calculate potential evapotranspiration using Hargreaves-Samani method
-    table['pet'] = \
-        (0.0023 * table.solar_rad * (table.tavg + 17.8) * ((table.tmax - table.tmin) ** 0.5)) / 10  # mm/d -> cm/d
+        return table
 
-    return table
+    def perform_interpolation(daily_precip, daily_ncep, date):
+        interpolated = daily_precip.copy()
+        interpolated['date'] = date
+        points = daily_ncep[['lat', 'lon']].values
+        new_points = daily_precip[['lat', 'lon']].values
+        for value_field in ('tmax', 'tmin', 'tavg', 'pet', 'wind'):
+            interpolated[value_field] = \
+                scipy.interpolate.griddata(points, daily_ncep[value_field].values, new_points)
+        return interpolated
 
-
-def perform_interpolation(daily_precip, daily_ncep, date):
-    interpolated = daily_precip.copy()
-    interpolated['date'] = date
-    points = daily_ncep[['lat', 'lon']].values
-    new_points = daily_precip[['lat', 'lon']].values
-    for value_field in ('tmax', 'tmin', 'tavg', 'pet', 'wind'):
-        interpolated[value_field] = \
-            scipy.interpolate.griddata(points, daily_ncep[value_field].values, new_points)
-    return interpolated
-
-
-def map_stations(bounds=None, sample_year=1990, overwrite=True):
-    """ Use a representative precip file to assess the number of precipitation stations """
-    crosswalk = read_hydro.crosswalk()
-    if overwrite or not os.path.exists(met_grid_path):
-        stations = read_hydro.precip(sample_year, bounds)[['lat', 'lon']] \
-            .drop_duplicates().sort_values(['lat', 'lon']).reset_index(drop=True)
-        # Sort values and add an index
-        stations = stations.merge(crosswalk, left_on=('lat', 'lon'), right_on=('lat_met', 'lon_met'), how='outer')
-        write_hydro.met_grid(stations)
-    else:
-        stations = read_hydro.met_grid()
-    return stations[['weather_grid', 'stationID', 'lat', 'lon']]
+    def map_stations(bounds=None, sample_year=1990, overwrite=True):
+        """ Use a representative precip file to assess the number of precipitation stations """
+        crosswalk = read_weather.crosswalk()
+        if overwrite or not os.path.exists(met_grid_path):
+            stations = read_weather.precip(sample_year, bounds)[['lat', 'lon']] \
+                .drop_duplicates().sort_values(['lat', 'lon']).reset_index(drop=True)
+            # Sort values and add an index
+            stations = stations.merge(crosswalk, left_on=('lat', 'lon'), right_on=('lat_met', 'lon_met'), how='outer')
+            write_weather.met_grid(stations)
+        else:
+            stations = read_weather.met_grid()
+        return stations[['weather_grid', 'stationID', 'lat', 'lon']]

@@ -1,13 +1,12 @@
 import pandas as pd
 import numpy as np
 
-import os
-table = r"A:\opp-efed\sam\hydro\Tables\nhd_map.csv"
+comid = np.array(['123', '234', '345', '456'])
 
-table = pd.read_csv(table)
+nodes = pd.DataFrame({'a': ['234', '234', '345', '345'], 'b': ['123', '456', '123', '456']})
 
-news = pd.DataFrame(np.array([os.path.split(t) for t in table.table]), columns=['path', 'table'])
-news['path'] = news.path.str.lstrip("\\")
-table = pd.concat([news, table.iloc[:, 1:]], axis=1)
+# Create an alias for nodes
+convert = pd.Series(np.arange(comid.size), index=comid)
+nodes = nodes.apply(lambda row: row.map(convert)).fillna(-1).astype(np.int32)
 
-print(table.to_csv(r"A:\opp-efed\sam\hydro\Tables\nhd_map.csv", index=None))
+print(nodes)

@@ -1,4 +1,4 @@
-from weather import WeatherCubeBuilder, NcepBuilder
+from weather_files.weather import WeatherCubeBuilder, NcepBuilder
 
 
 def ncep():
