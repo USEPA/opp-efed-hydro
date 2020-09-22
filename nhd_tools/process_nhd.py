@@ -9,7 +9,7 @@ from paths_nhd import nhd_region_dir
 from efed_lib_hydro.read import dbf, report
 
 
-def condense_nhd(region, field_map_path, run_id, rename_field='internal_name'):
+def condense_nhd(region, field_map_path, run_id, rename_field='internal_name', write=False):
     """
     Pull data from NHD Plus dbf files and consolidate in a .csv file that is smaller to store and easier to read.
     Tables and fields to be pulled are specified in an NHD map table. A template may be found in Tables/nhd_map.csv.
@@ -56,7 +56,6 @@ def condense_nhd(region, field_map_path, run_id, rename_field='internal_name'):
             lake_table = lake_table.merge(table, on='wb_comid', how='outer') if lake_table is not None else table
         else:
             raise ValueError(f"Invalid feature type {feature_type}. Must be 'reach' or 'waterbody'")
-    print(reach_table.shape)
     write_nhd.condensed_nhd(run_id, region, reach_table, lake_table)
     return reach_table, lake_table
 
@@ -76,13 +75,12 @@ def process_divergence(nhd_table):
     return nhd_table
 
 
-def surface_area(nhd_table):
+def calculate_surface_area(nhd_table):
     # Calculate surface area
     stream_channel_a = 4.28
     stream_channel_b = 0.55
     cross_section = nhd_table.q_ma / nhd_table.v_ma
-    nhd_table['surface_area'] = stream_channel_a * np.power(cross_section, stream_channel_b)
-
+    return stream_channel_a * np.power(cross_section, stream_channel_b)
 
 def identify_outlet_reaches(nhd_table):
     # Indicate whether reaches are coastal
