@@ -2,7 +2,7 @@ import pandas as pd
 from paths_nhd import condensed_nhd_path
 
 
-def condensed_nhd(run_id, region, feature_type, path=None):
+def condensed_nhd(run_id=None, region=None, feature_type=None, path=None):
     path = condensed_nhd_path if path is None else path
     return pd.read_csv(path.format(run_id, region, feature_type))
 
