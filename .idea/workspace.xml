@@ -27,12 +27,24 @@
     <SUITE FILE_PATH="coverage/hydro$condenser_tester.coverage" NAME="condenser_tester Coverage Results" MODIFIED="1600711584221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1326">
+            <state relative-caret-position="51">
               <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/read_nhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="4896">
               <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -52,7 +64,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="204">
               <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
@@ -133,7 +145,6 @@
         <option value="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" />
         <option value="$PROJECT_DIR$/nhd_tools/params_nhd.py" />
         <option value="$PROJECT_DIR$/weather_files/weather.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/read_nhd.py" />
         <option value="$PROJECT_DIR$/dev/sandbox.py" />
         <option value="$PROJECT_DIR$/nhd_tools/paths_nhd.py" />
         <option value="$PROJECT_DIR$/dev/shaper.py" />
@@ -144,6 +155,7 @@
         <option value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
         <option value="$PROJECT_DIR$/nhd_tools/navigator.py" />
         <option value="$PROJECT_DIR$/nhd_tools/write_nhd.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/read_nhd.py" />
       </list>
     </option>
   </component>
@@ -355,17 +367,18 @@
       <workItem from="1600263618907" duration="226000" />
       <workItem from="1600283798285" duration="57868000" />
       <workItem from="1600780650888" duration="1757000" />
+      <workItem from="1601065138962" duration="1347000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89742000" />
+    <option name="totallyTimeSpent" value="91089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2931174" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29797572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -457,13 +470,13 @@
     <entry file="file://$PROJECT_DIR$/unpack_nhd.py" />
     <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv___jb_tmp___" />
     <entry file="file://$PROJECT_DIR$/Tables/fields_and_qc.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
         </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/efed_lib_hydro/efed_lib.py">
@@ -559,16 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/read_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dev/test_navigator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -576,24 +579,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/duplicates.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-221">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/duplicates.csv" />
     <entry file="file://$PROJECT_DIR$/Tables/nhd_map_nav.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="11" selection-end-column="49" />
         </state>
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/paths_nhd.py">
@@ -603,9 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/convert.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/convert.csv" />
     <entry file="file://$PROJECT_DIR$/dev/sandbox.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -616,9 +608,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/nodes.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/nodes.csv" />
     <entry file="file://$PROJECT_DIR$/dev/condenser_tester.py" />
     <entry file="file://$PROJECT_DIR$/dev/shaper.py" />
     <entry file="file://$PROJECT_DIR$/weather_files/write_weather.py">
@@ -632,26 +622,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tables/nhd_map_original.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="397">
           <caret line="1859" column="88" selection-start-line="1859" selection-start-column="88" selection-end-line="1859" selection-end-column="88" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tables/sam_map_lake.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/sam_map_lake.csv" />
+    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="-5913">
+          <caret line="1488" column="24" selection-start-line="1488" selection-start-column="24" selection-end-line="1490" selection-end-column="59" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3">
           <column index="0" width="100" />
@@ -662,11 +648,6 @@
           <column index="5" width="100" />
           <column index="6" width="100" />
           <column index="7" width="100" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-5913">
-          <caret line="1488" column="24" selection-start-line="1488" selection-start-column="24" selection-end-line="1490" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -680,19 +661,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="4896">
           <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -700,10 +671,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
+        <state relative-caret-position="51">
           <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/read_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

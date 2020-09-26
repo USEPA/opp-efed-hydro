@@ -80,6 +80,10 @@ class Navigator(object):
             upstream_sites['days'] = 0 - upstream_sites.days
         return upstream_sites
 
+    def batch_upstream(self, reaches):
+        all_upstream = {upstream for reach in reaches for upstream in self.upstream_watershed(reach)}
+        return pd.Series(sorted(all_upstream), name='comid')
+
 
 def collapse_array(paths, times, lengths):
     """
