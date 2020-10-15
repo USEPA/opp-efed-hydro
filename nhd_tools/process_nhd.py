@@ -50,7 +50,6 @@ def condense_nhd(region, field_map_path, rename_field='internal_name'):
         table = table.drop_duplicates()
         if feature_type == 'reach':
             reach_table = reach_table.merge(table, on='comid', how='outer') if reach_table is not None else table
-            print(reach_table.shape)
         elif feature_type == 'waterbody':
             table = table.rename(columns={'comid': 'wb_comid'})
             lake_table = lake_table.merge(table, on='wb_comid', how='outer') if lake_table is not None else table
@@ -80,6 +79,7 @@ def calculate_surface_area(nhd_table):
     stream_channel_b = 0.55
     cross_section = nhd_table.q_ma / nhd_table.v_ma
     return stream_channel_a * np.power(cross_section, stream_channel_b)
+
 
 def identify_outlet_reaches(nhd_table):
     # Indicate whether reaches are coastal
@@ -126,4 +126,4 @@ def identify_waterbody_outlets(wb_table, reach_table):
     # Join the outlets to the waterbodies
     wb_table = wb_table.merge(lentic_table, how='left', on='wb_comid')
 
-    return wb_table
+    return wb_table.rename(columns={'comid': 'outlet_comid'})

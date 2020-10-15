@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c81ef0-fba1-4e24-9399-9804e20b0f05" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nhd_tools/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/fields_and_qc.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/fields_and_qc.csv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/nhd_map_sam.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tables/station_xwalk.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/efed_lib_hydro/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/efed_lib_hydro/read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/paths_nhd.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/paths_nhd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nhd_tools/process_nhd.py" beforeDir="false" afterPath="$PROJECT_DIR$/nhd_tools/process_nhd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_files/0_build_weather_files.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_files/paths_weather.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_files/read_weather.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_files/weather.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather_files/write_weather.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,35 +27,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/hydro$sandbox.coverage" NAME="sandbox Coverage Results" MODIFIED="1600696958911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
-    <SUITE FILE_PATH="coverage/hydro$navigator.coverage" NAME="navigator Coverage Results" MODIFIED="1600711080179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
-    <SUITE FILE_PATH="coverage/hydro$nhd.coverage" NAME="nhd Coverage Results" MODIFIED="1600377372265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hydro$acquire_nhd.coverage" NAME="acquire_nhd Coverage Results" MODIFIED="1601910771032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
+    <SUITE FILE_PATH="coverage/hydro$build_sam_nhd.coverage" NAME="build_sam_nhd Coverage Results" MODIFIED="1601655896240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
     <SUITE FILE_PATH="coverage/hydro$0_build_weather_files.coverage" NAME="0_build_weather_files Coverage Results" MODIFIED="1591823384449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hydro$test_navigator.coverage" NAME="test_navigator Coverage Results" MODIFIED="1600458843559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
-    <SUITE FILE_PATH="coverage/hydro$0_build_hydro_files.coverage" NAME="0_build_hydro_files Coverage Results" MODIFIED="1600379910854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hydro$condense_nhd_sam.coverage" NAME="condense_nhd_sam Coverage Results" MODIFIED="1601578918628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
     <SUITE FILE_PATH="coverage/hydro$raw_ncep.coverage" NAME="raw_ncep Coverage Results" MODIFIED="1591711430962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hydro$weather.coverage" NAME="weather Coverage Results" MODIFIED="1591823268460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hydro$read_hydro.coverage" NAME="read_hydro Coverage Results" MODIFIED="1600312402443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/hydro$write_nhd.coverage" NAME="write_nhd Coverage Results" MODIFIED="1600457711910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
+    <SUITE FILE_PATH="coverage/hydro$test.coverage" NAME="test Coverage Results" MODIFIED="1602106708409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
     <SUITE FILE_PATH="coverage/hydro$process_nhd.coverage" NAME="process_nhd Coverage Results" MODIFIED="1600702047362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
     <SUITE FILE_PATH="coverage/hydro$condenser_tester.coverage" NAME="condenser_tester Coverage Results" MODIFIED="1600711584221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
+    <SUITE FILE_PATH="coverage/hydro$sandbox.coverage" NAME="sandbox Coverage Results" MODIFIED="1600696958911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
+    <SUITE FILE_PATH="coverage/hydro$navigator.coverage" NAME="navigator Coverage Results" MODIFIED="1600711080179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
+    <SUITE FILE_PATH="coverage/hydro$nhd.coverage" NAME="nhd Coverage Results" MODIFIED="1600377372265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hydro$test_navigator.coverage" NAME="test_navigator Coverage Results" MODIFIED="1600458843559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev" />
+    <SUITE FILE_PATH="coverage/hydro$0_build_hydro_files.coverage" NAME="0_build_hydro_files Coverage Results" MODIFIED="1600379910854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hydro$write_nhd.coverage" NAME="write_nhd Coverage Results" MODIFIED="1600457711910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nhd_tools" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nhd_tools/read_nhd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+            <state relative-caret-position="187">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -50,25 +71,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
+        <entry file="file://$PROJECT_DIR$/efed_lib_hydro/read.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4896">
-              <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="9" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
+        <entry file="file://$PROJECT_DIR$/efed_lib_hydro/efed_lib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="4182">
+              <caret line="251" column="66" selection-start-line="251" selection-start-column="66" selection-end-line="251" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -107,6 +134,10 @@
       <find>np</find>
       <find>idea</find>
       <find>condense_nhd</find>
+      <find>v_ma</find>
+      <find>self.</find>
+      <find>nhd_table.</find>
+      <find>fields_hydro</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -135,27 +166,32 @@
         <option value="$PROJECT_DIR$/navigator.py" />
         <option value="$PROJECT_DIR$/nhd.py" />
         <option value="$PROJECT_DIR$/weather_files/write_weather.py" />
-        <option value="$PROJECT_DIR$/efed_lib_hydro/read.py" />
         <option value="$PROJECT_DIR$/weather_files/read_weather.py" />
         <option value="$PROJECT_DIR$/weather_files/paths_weather.py" />
         <option value="$PROJECT_DIR$/read_hydro.py" />
         <option value="$PROJECT_DIR$/write_hydro.py" />
         <option value="$PROJECT_DIR$/utilities_hydro.py" />
         <option value="$PROJECT_DIR$/nhd_tools/nhd.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" />
         <option value="$PROJECT_DIR$/nhd_tools/params_nhd.py" />
         <option value="$PROJECT_DIR$/weather_files/weather.py" />
         <option value="$PROJECT_DIR$/dev/sandbox.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/paths_nhd.py" />
         <option value="$PROJECT_DIR$/dev/shaper.py" />
         <option value="$PROJECT_DIR$/dev/condenser_tester.py" />
         <option value="$PROJECT_DIR$/Tables/nhd_map_original.csv" />
         <option value="$PROJECT_DIR$/dev/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
-        <option value="$PROJECT_DIR$/nhd_tools/navigator.py" />
         <option value="$PROJECT_DIR$/nhd_tools/write_nhd.py" />
         <option value="$PROJECT_DIR$/nhd_tools/read_nhd.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/navigator.py" />
+        <option value="$PROJECT_DIR$/dev/condense_nhd_sam.py" />
+        <option value="$PROJECT_DIR$/dev/build_sam_nhd.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" />
+        <option value="$PROJECT_DIR$/../acquire/acquire_nhd.py" />
+        <option value="$PROJECT_DIR$/Tables/fields_and_qc.csv.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/paths_nhd.py" />
+        <option value="$PROJECT_DIR$/efed_lib_hydro/read.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/test.py" />
+        <option value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
       </list>
     </option>
   </component>
@@ -171,12 +207,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
               <item name="hydro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hydro" type="462c0819:PsiDirectoryNode" />
+              <item name="efed_lib_hydro" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hydro" type="b2602c69:ProjectViewProjectNode" />
@@ -192,7 +234,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,13 +244,13 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="A:\opp-efed\hydro" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\opp-efed\hydro\nhd_tools" />
       <recent name="A:\opp-efed\hydro\weather_files" />
       <recent name="A:\opp-efed\hydro\dev" />
-      <recent name="A:\opp-efed\hydro\nhd_tools" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\opp-efed\hydro" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -224,7 +265,73 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.condenser_tester">
+  <component name="RunManager" selected="Python.test">
+    <configuration name="acquire_nhd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="hydro" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Jhook\AppData\Local\Continuum\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nhd_tools" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nhd_tools/acquire_nhd.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_sam_nhd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="hydro" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/build_sam_nhd.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="condense_nhd_sam" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="hydro" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/condense_nhd_sam.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="condenser_tester" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="hydro" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,7 +354,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="navigator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="hydro" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -260,7 +367,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nhd_tools/navigator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nhd_tools/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -269,79 +376,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="process_nhd" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="hydro" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nhd_tools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nhd_tools/process_nhd.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="sandbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="hydro" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/sandbox.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_navigator" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="hydro" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/test_navigator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Python.acquire_nhd" />
+      <item itemvalue="Python.build_sam_nhd" />
+      <item itemvalue="Python.condense_nhd_sam" />
+      <item itemvalue="Python.condenser_tester" />
+      <item itemvalue="Python.test" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.acquire_nhd" />
+        <item itemvalue="Python.build_sam_nhd" />
+        <item itemvalue="Python.condense_nhd_sam" />
         <item itemvalue="Python.condenser_tester" />
-        <item itemvalue="Python.navigator" />
-        <item itemvalue="Python.process_nhd" />
-        <item itemvalue="Python.sandbox" />
-        <item itemvalue="Python.test_navigator" />
       </list>
     </recent_temporary>
   </component>
@@ -368,25 +416,36 @@
       <workItem from="1600283798285" duration="57868000" />
       <workItem from="1600780650888" duration="1757000" />
       <workItem from="1601065138962" duration="1347000" />
+      <workItem from="1601149137450" duration="675000" />
+      <workItem from="1601297957627" duration="570000" />
+      <workItem from="1601577267854" duration="4428000" />
+      <workItem from="1601585819433" duration="3894000" />
+      <workItem from="1601910436409" duration="3032000" />
+      <workItem from="1601918250725" duration="1686000" />
+      <workItem from="1601921500072" duration="48000" />
+      <workItem from="1602098140341" duration="796000" />
+      <workItem from="1602099932742" duration="161000" />
+      <workItem from="1602104413509" duration="719000" />
+      <workItem from="1602105893715" duration="391000" />
+      <workItem from="1602106689464" duration="4344000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91089000" />
+    <option name="totallyTimeSpent" value="111833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29797572" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2631579" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.42628774" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.39786857" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
@@ -433,25 +492,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nhd_tools/acquire_nhd.py</url>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Continuum/anaconda3/Lib/site-packages/xarray/core/merge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="9" column="50" lean-forward="true" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/raw_ncep.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -460,32 +501,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/weather_files/0_build_weather_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_files/0_build_weather_files.py" />
     <entry file="file://$PROJECT_DIR$/unpack_nhd.py" />
     <entry file="file://$PROJECT_DIR$/Tables/nhd_map.csv___jb_tmp___" />
-    <entry file="file://$PROJECT_DIR$/Tables/fields_and_qc.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/efed_lib_hydro/efed_lib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="251" column="66" selection-start-line="251" selection-start-column="66" selection-end-line="251" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Continuum/anaconda3/Lib/site-packages/pandas/core/generic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -504,74 +522,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/0_build_hydro_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#209#1" />
-            <element signature="e#248#290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/efed_lib_hydro/read.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_files/read_weather.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_files/paths_weather.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_files/read_weather.py" />
+    <entry file="file://$PROJECT_DIR$/weather_files/paths_weather.py" />
     <entry file="file://$PROJECT_DIR$/paths_hydro.py" />
     <entry file="file://$PROJECT_DIR$/read_hydro.py" />
     <entry file="file://$PROJECT_DIR$/write_hydro.py" />
     <entry file="file://$PROJECT_DIR$/utilities_hydro.py" />
-    <entry file="file://$PROJECT_DIR$/nhd_tools/acquire_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dev/testfile.txt" />
     <entry file="file://$PROJECT_DIR$/dev/with_outlets.csv" />
-    <entry file="file://$PROJECT_DIR$/nhd_tools/params_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weather_files/weather.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="118" column="23" lean-forward="true" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_files/weather.py" />
     <entry file="file://$PROJECT_DIR$/dev/test_navigator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -590,13 +549,6 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/paths_nhd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/convert.csv" />
     <entry file="file://$PROJECT_DIR$/dev/sandbox.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -611,16 +563,7 @@
     <entry file="file://$PROJECT_DIR$/nhd_tools/nodes.csv" />
     <entry file="file://$PROJECT_DIR$/dev/condenser_tester.py" />
     <entry file="file://$PROJECT_DIR$/dev/shaper.py" />
-    <entry file="file://$PROJECT_DIR$/weather_files/write_weather.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/weather_files/write_weather.py" />
     <entry file="file://$PROJECT_DIR$/Tables/nhd_map_original.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="397">
@@ -661,16 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4896">
-          <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/write_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -681,19 +614,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+    <entry file="file://$PROJECT_DIR$/nhd_tools/navigator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        <state relative-caret-position="167">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#409#739#0" />
+            <element signature="e#570#668#0" />
+            <element signature="e#769#1170#0" />
+            <element signature="e#1345#2852#0" />
+            <element signature="e#1376#1544#0" />
+            <element signature="e#1795#1911#0" />
+            <element signature="e#2122#2290#0" />
+            <element signature="e#2400#2548#0" />
+            <element signature="e#2588#2653#0" />
+            <element signature="e#2939#3712#0" />
+            <element signature="e#3320#3447#0" />
+            <element signature="e#3494#3682#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/nhd_map_sam.csv" />
+    <entry file="file://$PROJECT_DIR$/dev/test_table.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/condense_nhd_sam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="18" lean-forward="true" selection-end-line="19" selection-end-column="33" />
+          <folding>
+            <element signature="e#1#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/trip_test.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="34">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/build_sam_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../acquire/acquire_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/params_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/0_build_hydro_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#209#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tables/fields_and_qc.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/paths_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nhd_tools/read_nhd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+        <state relative-caret-position="187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/efed_lib_hydro/read.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/efed_lib_hydro/efed_lib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4182">
+          <caret line="251" column="66" selection-start-line="251" selection-start-column="66" selection-end-line="251" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/process_nhd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nhd_tools/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>

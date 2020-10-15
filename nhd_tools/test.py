@@ -1,6 +1,10 @@
 from process_nhd import condense_nhd
+import pandas as pd
+from navigator import build_navigator, Navigator
+field_map_path = r"A:\opp-efed\sam\Tables\nhd_map_sam.csv"
+reach_table, lake_table = condense_nhd('07', field_map_path)
 
-field_map_path = r"A:\opp-efed\hydro\Tables\nhd_map_nav.csv"
-reach_table, _ = condense_nhd('07', field_map_path)
+reach_table.to_csv("r07_reach.csv", index=None)
+lake_table.to_csv("r07_waterbody.csv", index=None)
 
-reach_table.to_csv("r07_condensed_nav_reach.csv")
+
