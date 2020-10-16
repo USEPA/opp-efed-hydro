@@ -6,7 +6,7 @@ are created from the National Hydrography Dataset Plus (NHD Plus).
 """
 
 # Import local modules and functions
-from tools_hydro.tools import report
+from tools_hydro.efed_lib import report
 from utilities_hydro import fields_hydro as fields
 import read_hydro
 from nhd_tools.params_nhd import NavigatorBuilder

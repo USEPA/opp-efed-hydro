@@ -1,4 +1,4 @@
-from tools_hydro.tools import FieldManager
+from tools_hydro.efed_lib import FieldManager
 from paths_nhd import fields_and_qc_path
 
 nhd_states = {'01': {"ME", "NH", "VT", "MA", "CT", "RI", "NY"},

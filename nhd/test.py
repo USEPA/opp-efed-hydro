@@ -6,5 +6,3 @@ reach_table, lake_table = condense_nhd('07', field_map_path)
 
 reach_table.to_csv("r07_reach.csv", index=None)
 lake_table.to_csv("r07_waterbody.csv", index=None)
-
-

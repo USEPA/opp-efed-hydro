@@ -4,7 +4,7 @@ import pandas as pd
 import read_nhd
 import write_nhd
 from paths_nhd import navigator_path, navigator_map_path, condensed_nhd_path
-from tools_hydro.tools import report
+from tools_hydro.efed_lib import report
 from process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
 from params_nhd import nhd_regions
 
