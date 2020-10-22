@@ -1,8 +1,15 @@
 import os
 
-global_dir = r"E:\opp-efed-data\global"
-local_dir = r"E:\opp-efed-data\hydro"
-table_dir = r"A:\opp-efed\hydro\Tables"
+local_run = False
+
+if local_run:
+    global_dir = r"E:\opp-efed-data\global"
+    local_dir = r"E:\opp-efed-data\hydro"
+    table_dir = r"A:\opp-efed\hydro\Tables"
+else:
+    global_dir = "/src/app-data/sampreprocessed"
+    local_dir = global_dir
+    table_dir = os.path.join("..", "Tables")
 
 # Tables
 fields_and_qc_path = os.path.join(table_dir, "fields_and_qc.csv")

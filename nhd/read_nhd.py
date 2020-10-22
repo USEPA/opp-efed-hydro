@@ -1,5 +1,5 @@
 import pandas as pd
-from paths_nhd import condensed_nhd_path
+from hydro.nhd.paths_nhd import condensed_nhd_path
 
 
 def condensed_nhd(run_id=None, region=None, feature_type=None, path=None):
