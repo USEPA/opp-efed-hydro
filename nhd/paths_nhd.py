@@ -1,13 +1,13 @@
 import os
-
-local_run = True
+import hydro
+local_run = False
 
 if local_run:
     global_dir = r"E:\opp-efed-data\global"
     local_dir = r"A:\opp-efed\hydro"
 else:
-    global_dir = "/src/app-data/sampreprocessed"
-    local_dir = os.path.realpath(__file__)
+    global_dir = "/src/app-data/sampreprocessed/Inputs"
+    local_dir = os.path.dirname(hydro.__file__)
 
 # Tables
 table_dir = os.path.join(local_dir, "Tables")
