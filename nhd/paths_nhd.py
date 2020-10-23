@@ -1,5 +1,5 @@
 import os
-import hydro
+import sam.hydro
 local_run = False
 
 if local_run:

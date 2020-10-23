@@ -1,12 +1,12 @@
 import os
 import numpy as np
 import pandas as pd
-import hydro.nhd.read_nhd
-import hydro.nhd.write_nhd
-from hydro.nhd.paths_nhd import navigator_path, navigator_map_path
-from hydro.tools_hydro.efed_lib import report
-from hydro.nhd.process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
-from hydro.nhd.params_nhd import nhd_regions
+import sam.hydro.nhd.read_nhd
+import sam.hydro.nhd.write_nhd
+from sam.hydro.nhd.paths_nhd import navigator_path, navigator_map_path
+from sam.hydro.tools_hydro.efed_lib import report
+from sam.hydro.nhd.process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
+from sam.hydro.nhd.params_nhd import nhd_regions
 
 
 class Navigator(object):

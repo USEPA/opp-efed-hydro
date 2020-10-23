@@ -2,11 +2,11 @@ import os
 import numpy as np
 import pandas as pd
 
-import hydro.nhd.read_nhd
-import hydro.nhd.write_nhd
-from hydro.nhd.params_nhd import vpus_nhd, fields_hydro as fields
-from hydro.nhd.paths_nhd import nhd_region_dir
-from hydro.tools_hydro.read import dbf, report
+import sam.hydro.nhd.read_nhd
+import sam.hydro.nhd.write_nhd
+from sam.hydro.nhd.params_nhd import vpus_nhd, fields_hydro as fields
+from sam.hydro.nhd.paths_nhd import nhd_region_dir
+from sam.hydro.tools_hydro.read import dbf, report
 
 
 def condense_nhd(region, field_map_path, rename_field='internal_name'):
