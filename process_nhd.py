@@ -5,7 +5,7 @@ import pandas as pd
 from . import read_nhd, write_nhd
 from .params_nhd import vpus_nhd, fields_hydro as fields
 from .paths_nhd import nhd_region_dir
-from tools_hydro.read import dbf, report
+from .tools_hydro.read import dbf, report
 
 
 def condense_nhd(region, field_map_path, rename_field='internal_name'):
