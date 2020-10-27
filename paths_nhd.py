@@ -1,4 +1,6 @@
 import os
+import pathlib
+
 local_run = False
 
 if local_run:
@@ -6,7 +8,7 @@ if local_run:
     local_dir = r"A:\opp-efed\hydro"
 else:
     global_dir = "/src/app-data/sampreprocessed/Inputs"
-    local_dir = "."
+    local_dir = pathlib.Path(__file__).parent.absolute()
 
 # Tables
 table_dir = os.path.join(local_dir, "Tables")
