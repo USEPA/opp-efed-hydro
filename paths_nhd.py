@@ -1,5 +1,4 @@
 import os
-import sam.hydro
 local_run = False
 
 if local_run:
@@ -7,7 +6,7 @@ if local_run:
     local_dir = r"A:\opp-efed\hydro"
 else:
     global_dir = "/src/app-data/sampreprocessed/Inputs"
-    local_dir = os.path.dirname(hydro.__file__)
+    local_dir = "."
 
 # Tables
 table_dir = os.path.join(local_dir, "Tables")

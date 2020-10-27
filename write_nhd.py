@@ -1,4 +1,4 @@
-from sam.hydro.nhd.paths_nhd import navigator_path
+from .paths_nhd import navigator_path
 import numpy as np
 import os
 
