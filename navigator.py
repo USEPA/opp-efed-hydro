@@ -1,12 +1,10 @@
 import os
 import numpy as np
 import pandas as pd
-from hydro import read_nhd
-from hydro import write_nhd
-from hydro.paths_nhd import navigator_path, navigator_map_path
-from hydro.tools_hydro.efed_lib import report
-from hydro.process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
-from hydro.params_nhd import nhd_regions
+from . import read_nhd, write_nhd
+from .paths_nhd import navigator_path, navigator_map_path
+from .tools_hydro.efed_lib import report
+from .process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
 
 
 class Navigator(object):
@@ -297,7 +295,7 @@ def build_navigators():
         nhd_path = condensed_nhd_path.format('nav', region, 'reach')
         if overwrite or not os.path.exists(nhd_path):
             reach_table, _ = \
-                condensed = condense_nhd(region, navigator_map_path, 'internal_name')
+                condense_nhd(region, navigator_map_path, 'internal_name')
             write_nhd.condensed_nhd('nav', region, reach_table)
         else:
             reach_table = read_nhd.condensed_nhd('nav', region, 'reach')

@@ -2,10 +2,10 @@ import os
 import numpy as np
 import pandas as pd
 
-from hydro import read_nhd
-from hydro.params_nhd import vpus_nhd, fields_hydro as fields
-from hydro.paths_nhd import nhd_region_dir
-from hydro.tools_hydro.read import dbf, report
+from .read_nhd import nhd_map
+from .params_nhd import vpus_nhd, fields_hydro as fields
+from .paths_nhd import nhd_region_dir
+from .tools_hydro.read import dbf, report
 
 
 def condense_nhd(region, field_map_path, rename_field='internal_name'):
@@ -20,7 +20,7 @@ def condense_nhd(region, field_map_path, rename_field='internal_name'):
     """
     # TODO - too many rows from plusflow?
     # Read in the NHD map specifying which tables and fields to read
-    field_map = read_nhd.nhd_map(field_map_path, rename_field=rename_field)
+    field_map = nhd_map(field_map_path, rename_field=rename_field)
 
     # Check to see if the output files have already been created
     report(f"Condensing NHD Plus from map file {field_map_path}...")
