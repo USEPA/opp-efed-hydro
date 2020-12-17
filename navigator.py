@@ -2,15 +2,12 @@ import os
 import numpy as np
 import pandas as pd
 from . import read_nhd, write_nhd
-from .paths_nhd import navigator_path, navigator_map_path
 from .tools_hydro.efed_lib import report
 from .process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
 
 
 class Navigator(object):
     def __init__(self, region_id, upstream_path=None):
-        if upstream_path is None:
-            upstream_path = navigator_path.format(region_id)
         self.file = upstream_path.format(region_id, 'nav', 'npz')
         self.paths, self.times, self.lengths, \
         self.map, self.alias_to_reach, self.reach_to_alias = self.load()
@@ -288,14 +285,14 @@ def build_navigator(region, nhd_table):
     write_nhd.navigator_file(region, paths, times, length, path_map, conversion)
 
 
-def build_navigators():
+def build_navigators(nhd_path, nav_path):
     nhd_regions = ['07']
     overwrite = False
     for region in nhd_regions:
-        nhd_path = condensed_nhd_path.format('nav', region, 'reach')
+        nhd_path = nhd_path.format('nav', region, 'reach')
         if overwrite or not os.path.exists(nhd_path):
             reach_table, _ = \
-                condense_nhd(region, navigator_map_path, 'internal_name')
+                condense_nhd(region, nav_path, 'internal_name')
             write_nhd.condensed_nhd('nav', region, reach_table)
         else:
             reach_table = read_nhd.condensed_nhd('nav', region, 'reach')
@@ -304,4 +301,5 @@ def build_navigators():
 
 
 if __name__ == '__main__':
-    build_navigators()
+    from paths_nhd import condensed_nhd_path, navigator_map_path
+    build_navigators(condensed_nhd_path, navigator_map_path)

@@ -2,6 +2,11 @@ import os
 import pathlib
 import sys
 
+"""
+Paths used by scripts dealing with NHD. Apart from the Tables subdirectory, these should never be required when 
+importing hydro as a module. Examples of how these paths are used would be when new files are created (e.g., navigators) 
+or links to the Tables directory.
+"""
 local_run = any([r'C:' in p for p in sys.path])
 if local_run:
     global_dir = r"E:\opp-efed-data\global"

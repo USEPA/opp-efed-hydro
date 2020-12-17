@@ -4,11 +4,10 @@ import pandas as pd
 
 from .read_nhd import nhd_map
 from .params_nhd import vpus_nhd, fields_hydro as fields
-from .paths_nhd import nhd_region_dir
 from .tools_hydro.read import dbf, report
 
 
-def condense_nhd(region, field_map_path, rename_field='internal_name'):
+def condense_nhd(region, field_map_path, nhd_region_dir, rename_field='internal_name'):
     """
     Pull data from NHD Plus dbf files and consolidate in a .csv file that is smaller to store and easier to read.
     Tables and fields to be pulled are specified in an NHD map table. A template may be found in Tables/nhd_map.csv.
@@ -126,3 +125,11 @@ def identify_waterbody_outlets(wb_table, reach_table):
     wb_table = wb_table.merge(lentic_table, how='left', on='wb_comid')
 
     return wb_table.rename(columns={'comid': 'outlet_comid'})
+
+
+if __name__ == "__main__":
+    from .paths_nhd import nhd_region_dir, nhd_map_path
+    from .params_nhd import nhd_regions
+
+    for region in nhd_regions:
+        condense_nhd(region, nhd_map_path, nhd_region_dir, rename_field='internal_name')
