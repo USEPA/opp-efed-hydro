@@ -7,8 +7,8 @@ from .process_nhd import identify_outlet_reaches, process_divergence, condense_n
 
 
 class Navigator(object):
-    def __init__(self, region_id, upstream_path=None):
-        self.file = upstream_path.format(region_id, 'nav', 'npz')
+    def __init__(self, nav_path):
+        self.file = nav_path
         self.paths, self.times, self.lengths, \
         self.map, self.alias_to_reach, self.reach_to_alias = self.load()
         self.reach_ids = set(self.reach_to_alias.keys())
