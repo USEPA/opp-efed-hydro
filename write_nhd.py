@@ -1,4 +1,3 @@
-from .paths_nhd import navigator_path
 import numpy as np
 import os
 
@@ -9,8 +8,16 @@ def create_dir(outfile):
         os.makedirs(directory)
 
 
-def navigator_file(region, paths, times, length, path_map, conversion):
-    create_dir(navigator_path)
-    outfile = navigator_path.format(region)
+def navigator_file(nav_dir, region, paths, times, length, path_map, conversion):
+    create_dir(nav_dir)
+    outfile = os.path.join(nav_dir, f"nav_{region}.npz")
     np.savez_compressed(outfile, paths=paths, time=times, length=length, path_map=path_map,
                         alias_index=conversion)
+
+
+def condensed_nhd(out_dir, run_id, region, reach_table, lake_table=None):
+    create_dir(out_dir)
+    for feature_type, table in (('reach', reach_table), ('waterbody', lake_table)):
+        if table is not None:
+            out_path = out_dir.format(run_id, region, feature_type)
+            table.to_csv(out_path, index=None)

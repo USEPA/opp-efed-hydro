@@ -130,6 +130,6 @@ def identify_waterbody_outlets(wb_table, reach_table):
 if __name__ == "__main__":
     from .paths_nhd import nhd_region_dir, nhd_map_path
     from .params_nhd import nhd_regions
-
     for region in nhd_regions:
-        condense_nhd(region, nhd_map_path, nhd_region_dir, rename_field='internal_name')
+        reach_table, lake_table = \
+            condense_nhd(region, nhd_map_path, nhd_region_dir, rename_field='internal_name')

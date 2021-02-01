@@ -21,7 +21,6 @@ nhd_map_path = os.path.join(table_dir, "nhd_map.csv")
 
 # HydroFiles
 navigator_map_path = os.path.join(table_dir, "nhd_map_nav.csv")
-navigator_path = os.path.join(global_dir, "NavigatorFiles", "nav{}.npz")  # region
 
 # Path containing NHD Plus dataset
 nhd_dir = os.path.join(global_dir, "NHDPlusV21")

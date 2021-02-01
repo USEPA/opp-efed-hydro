@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from . import read_nhd, write_nhd
 from .tools_hydro.efed_lib import report
+from .params_nhd import nhd_regions
 from .process_nhd import identify_outlet_reaches, process_divergence, condense_nhd
 
 
@@ -259,7 +260,7 @@ def unpack_nhd(nhd_table):
     return nodes.values, times, dists, outlets, conversion_array
 
 
-def build_navigator(region, nhd_table):
+def build_navigator(region, nhd_table, nav_dir):
     """
     Initializes the creation of a Navigator object, which is used for rapid
     delineation of watersheds using NHD Plus catchments.
@@ -282,11 +283,10 @@ def build_navigator(region, nhd_table):
     report("Collapsing array...", 2)
     paths, times, length, start_cols = collapse_array(paths, times, dists)
 
-    write_nhd.navigator_file(region, paths, times, length, path_map, conversion)
+    write_nhd.navigator_file(nav_dir, region, paths, times, length, path_map, conversion)
 
 
 def build_navigators(nhd_path, nav_path):
-    nhd_regions = ['07']
     overwrite = False
     for region in nhd_regions:
         nhd_path = nhd_path.format('nav', region, 'reach')
